@@ -14,11 +14,12 @@ const Button = ({ title }) => {
 const styles = StyleSheet.create({
   button: {
     alignSelf: "center",
-    backgroundColor: "#107eeb",
+    backgroundColor: "#9a98a6",
     padding: 8,
     borderRadius: 50,
-    marginBottom: 10,
-    width: width * 0.8,
+    marginBottom: 2,
+    marginTop: 15,
+    width: width * 0.7,
   },
   buttonText: {
     color: "#ffffff",

@@ -6,14 +6,16 @@ import {
   View,
   Text,
 } from "react-native";
-import LoginForm from "../components/loginForm"
+import LoginForm from "../components/loginForm";
+import Logo from "../shared/Logo";
+import pantallaPrueba from "../screens/pantalla_prueba";
 
 const { width, height } = Dimensions.get("screen");
 
 const Login = ({ navigation }) => {
     return (
       <View style={styles.container}>
-          <Text>logo</Text>
+          <Text>Logo</Text>
           <LoginForm/>
           <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
       </View>
@@ -29,6 +31,8 @@ const Login = ({ navigation }) => {
     },
     forgotPassword: {
       textAlign: "center",
+      color: "white",
+      marginTop: 10,
     },
   });
   
