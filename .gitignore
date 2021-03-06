@@ -11,12 +11,7 @@ web-build/
 
 # macOS
 .DS_Store
-<<<<<<< HEAD
 
 
 #Variable de ambiente
 .enviroment.js
-=======
-# enviroment
-.enviroment
->>>>>>> devChristian
