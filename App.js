@@ -12,8 +12,8 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="login" component={login} options={{ headerShown: false }}/>
-            <Stack.Screen name="pantalla_prueba" component={pantalla_prueba} options={{ headerShown: false }}/>
+            <Stack.Screen name="login" component={login}/>
+            <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

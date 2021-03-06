@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TouchableOpacity, Text,} from "react-native";
 import { Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Button from "./button";
+import { SocialIcon } from 'react-native-elements'
 import { validate } from "email-validator";
 import { firebase } from "../firebase";
 import Alert from "../shared/Alert";
 
-const loginForm = () => {
+
+const loginForm = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [error, setError] = useState("");
+  const provider = new firebase.auth.FacebookAuthProvider();
 
     // Verifica que se ingresan los datos del email y el password
     const handleVerify = (input) => {
@@ -25,7 +27,18 @@ const loginForm = () => {
         else setPasswordError(false);
       }
     };
-  
+
+    const loginWithFacebook = () => {
+      firebase
+      .auth().signInWithPopup(provider).then((result) => {
+       console.log("Inicio de sesión correcta")
+       navigation.navigate("pantalla_prueba")
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
+
     const handleLogin = () => {
       firebase
         .auth()
@@ -34,6 +47,15 @@ const loginForm = () => {
         .catch((error) => {
           setError(error.message);
         });
+    };
+
+    const passwordResetEmail = () => {
+      var auth = firebase.auth();
+      auth.sendPasswordResetEmail(email).then(function() {
+        console.log("Correo enviado")
+      }).catch(function(error) {
+        console.log(error)
+      });
     };
 
   return (
@@ -72,10 +94,29 @@ const loginForm = () => {
           }
         />
       </View>
-      <TouchableOpacity onPress={handleLogin}>
-        <Button title="Iniciar Sesión"/>
-      </TouchableOpacity>
-      <Button title="Regístrate"/>
+
+      <SocialIcon
+        title='Iniciar Sesión'
+        button
+        style={styles.buttonStyle}
+        onPress={handleLogin}
+      />
+
+      <SocialIcon
+        title='Iniciar con Facebook'
+        button
+        type='facebook'
+        onPress={loginWithFacebook}
+
+      />
+
+      <SocialIcon
+        title='Regístrate'
+        button
+        style={styles.buttonStyle}
+      />
+      <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+
     </View>
   );
 };
@@ -86,6 +127,15 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         padding: 0,
         margin: 7
+    },
+    buttonStyle:{
+      backgroundColor: "red",
+      textAlign: "center",
+    },
+    forgotPassword: {
+      textAlign: "center",
+      color: "white",
+      marginTop: 10,
     },
 });
 

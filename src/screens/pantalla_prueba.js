@@ -9,7 +9,7 @@ const { width, height } = Dimensions.get("screen");
 
 const pantallaPrueba = ({ navigation }) => {
     return (
-      <View style={styles.container}>
+      <View>
           <Text>Hola mundo</Text>
       </View>
     );
