@@ -43,7 +43,10 @@ const loginForm = ({navigation}) => {
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then((response) => console.log(response))
+        .then((response) => {
+        console.log(response)
+        navigation.navigate("pantalla_prueba")
+        })
         .catch((error) => {
           setError(error.message);
         });
@@ -115,7 +118,18 @@ const loginForm = ({navigation}) => {
         button
         style={styles.buttonStyle}
       />
-      <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+      <TouchableOpacity onPress={passwordResetEmail}
+        onBlur={() => {
+        handleVerify(email);
+        }}
+        errorMessage={
+          emailError
+            ? "Por favor ingrese su cuenta de correo electrónico"
+            : null
+        }>
+
+        <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
+      </TouchableOpacity>
 
     </View>
   );
