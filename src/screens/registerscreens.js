@@ -9,10 +9,18 @@ import RegisterForm from "../components/forms/registerForm";
 
 const {width, height} = Dimensions.get("screen");
 
-const register = () => {
+const register = ({navigation}) => {
+    
     return (
         <View style={styles.container}> 
             <RegisterForm/>
+            <TouchableOpacity
+                onPress={() => {
+                navigation.goBack();
+                }}
+            >
+                <Text>¿Ya tienes una cuenta? Login</Text>
+            </TouchableOpacity>
         </View>
     );
 };
