@@ -67,6 +67,10 @@ const loginForm = ({navigation}) => {
       }
     };
 
+    const buttonRegister = () => {
+      navigation.navigate("registerscreen", {});
+    };
+
   return (
     <View>
       {error ? <Alert title={error} type="error" /> : null}
@@ -92,6 +96,7 @@ const loginForm = ({navigation}) => {
           placeholder="Password"
           leftIcon={<Icon name="lock" />}
           value={password}
+          secureTextEntry
           onChangeText={setPassword}
           onBlur={() => {
             handleVerify(password);
@@ -116,14 +121,13 @@ const loginForm = ({navigation}) => {
         button
         type='facebook'
         onPress={loginWithFacebook}
-
       />
 
       <SocialIcon
         title='Regístrate'
         button
         style={styles.buttonStyle}
-        onPress={navigation.navigate("registerscreen")}
+        onPress={buttonRegister}
       />
       <TouchableOpacity onPress={passwordResetEmail}>
         <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>

@@ -2,12 +2,9 @@ import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import login from "./src/screens/loginscreen";
-import registerscreen from "./src/screens/registerscreen"
-import pantalla_prueba from "./src/screens/pantalla_prueba"
-
-
-import { Title } from "native-base";
+import loginscreen from "./src/screens/loginscreen";
+import registerscreen from "./src/screens/registerscreen";
+import pantalla_prueba from "./src/screens/pantalla_prueba";
 
 const Stack = createStackNavigator();
 
@@ -15,16 +12,16 @@ export default function App() {
   return (
       <SafeAreaProvider>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator initialRouteName={ "loginscreen" } >
             <Stack.Screen 
-              name="login" component={login} 
+              name="loginscreen" component={loginscreen} 
               options={{title:"Inico de Sesión", 
               headerStyle:{backgroundColor: "#182126"},
               headerTitleAlign: "center", 
-              headerTintColor: "#fff"}}/>
+              headerTintColor: "#fff",}}/>
 
             <Stack.Screen 
-              name= "Register" component={registerscreen}
+              name= "registerscreen" component={registerscreen}
               options={{title: "Registrar",
               headerStyle:{backgroundColor: "#182126",},
               headerTitleAlign: "center",
