@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import login from "./src/screens/login";
 import pantalla_prueba from "./src/screens/pantalla_prueba"
+import { Title } from "native-base";
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export default function App() {
       <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="login" component={login}/>
+            <Stack.Screen name="login" component={login} options={{title:"Inico de Sesión", headerStyle:{backgroundColor: "#182126"},headerTitleAlign: "center", headerTintColor: "#fff"}}/>
             <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
           </Stack.Navigator>
         </NavigationContainer>

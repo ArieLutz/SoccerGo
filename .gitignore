@@ -12,6 +12,6 @@ web-build/
 # macOS
 .DS_Store
 # enviroment
-.enviroment.js
+.enviroment_firebase.js
 # pantalla de prueba
 .pantalla_prueba.js
