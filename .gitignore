@@ -13,3 +13,5 @@ web-build/
 .DS_Store
 # enviroment
 .enviroment.js
+# pantalla de prueba
+.pantalla_prueba.js
