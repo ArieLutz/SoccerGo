@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { StyleSheet, View, } from "react-native";
-import { Input, Button, withTheme, }  from "react-native-elements";
+import { Input, Button, SocialIcon }  from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { firebase } from "../firabase/index";
 import { validate } from "email-validator";
 
 
-const RegisterForm = () => {
+
+const RegisterForm = ( {navigation} ) => {
     const [usuario, setUsuario] = useState ("");
     const [correoElectronico, setCorreoElectronico] = useState("");
     const [contraseña, setContraseña]= useState ("");
@@ -41,13 +42,25 @@ const RegisterForm = () => {
         }
     };
 
+    const loginWithFacebook = () => {
+        firebase
+        .auth().signInWithPopup(provider).then((result) => {
+         console.log("Inicio de sesión correcta")
+         navigation.navigate("login")
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }
+
     const handleRegister = () =>{ 
 
      firebase
      .auth()
      .createUserWithEmailAndPassword(correoElectronico, contraseña)
      .then((response)=> {
-         console.log(response);
+         console.log(response)
+         navigation.navigate("login")
         })
      .catch((error) => console.log(error));
     };
@@ -119,10 +132,19 @@ const RegisterForm = () => {
                 />
             </View>
             
-            <View style={styles.button}>
-                <Button title="Registrar" onPress={handleRegister} />
-            </View>
-            
+            <SocialIcon 
+                 title="Registrar"
+                 button
+                 style={styles.button}
+                 onPress={handleRegister}
+            />
+
+            <SocialIcon
+                title='Iniciar con Facebook'
+                button
+                type='facebook'
+                onPress={loginWithFacebook}
+            />
        </View>
    );
 };
@@ -136,12 +158,14 @@ const styles = StyleSheet.create({
         margin: 7,
     },
 
-    button: {
-        borderRadius:150,
-        padding: 5,
-        margin: 7,
+    button:{
+            backgroundColor: "#656873",
+            textAlign: "center",
+           
       },
 });
 
    
 export default RegisterForm;
+
+

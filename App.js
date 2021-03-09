@@ -6,6 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import registerscreens from "./src/screens/registerscreens";
+import login from "./src/screens/login";
 import theme from "./src/theme";
 
 const Stack = createStackNavigator();
@@ -27,6 +28,18 @@ export default function App() {
                 headerTitleAlign: "center",
                 headerTintColor: "#fff",
               }}
+              />
+              <Stack.Screen
+                 name= "login" 
+                 component={login}
+                 options={{
+                   title: "prueba",
+                   headerStyle: {
+                     backgroundColor: "#182126",
+                   },
+                   headerTitleAlign: "center",
+                   headerTintColor: "#fff",
+                 }}
               />
            </Stack.Navigator>
         </NavigationContainer>
