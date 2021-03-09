@@ -53,12 +53,18 @@ const loginForm = ({navigation}) => {
     };
 
     const passwordResetEmail = () => {
-      var auth = firebase.auth();
-      auth.sendPasswordResetEmail(email).then(function() {
-        console.log("Correo enviado")
-      }).catch(function(error) {
-        console.log(error)
-      });
+      if(validate(email))
+      {
+        var auth = firebase.auth();
+        auth.sendPasswordResetEmail(email).then(function() {
+          console.log("Correo enviado")
+        }).catch(function(error) {
+          console.log(error)
+        });
+      }
+      else{
+        setEmailError(true);
+      }
     };
 
   return (
@@ -118,16 +124,7 @@ const loginForm = ({navigation}) => {
         button
         style={styles.buttonStyle}
       />
-      <TouchableOpacity onPress={passwordResetEmail}
-        onBlur={() => {
-        handleVerify(email);
-        }}
-        errorMessage={
-          emailError
-            ? "Por favor ingrese su cuenta de correo electrónico"
-            : null
-        }>
-
+      <TouchableOpacity onPress={passwordResetEmail}>
         <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>
       </TouchableOpacity>
 
@@ -143,7 +140,7 @@ const styles = StyleSheet.create({
         margin: 7
     },
     buttonStyle:{
-      backgroundColor: "red",
+      backgroundColor: "#656873",
       textAlign: "center",
     },
     forgotPassword: {

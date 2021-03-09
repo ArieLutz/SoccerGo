@@ -9,7 +9,7 @@ const Logo = () => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require("./logo.png")}
+        source={require("../../assets/logo.png")}
       />
     </View>
   );
