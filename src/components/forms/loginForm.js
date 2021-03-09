@@ -4,8 +4,8 @@ import { Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { SocialIcon } from 'react-native-elements'
 import { validate } from "email-validator";
-import { firebase } from "../firebase";
-import Alert from "../shared/Alert";
+import { firebase } from "../../firebase";
+import Alert from "../../shared/Alert";
 
 
 const loginForm = ({navigation}) => {
@@ -123,6 +123,7 @@ const loginForm = ({navigation}) => {
         title='Regístrate'
         button
         style={styles.buttonStyle}
+        onPress={navigation.navigate("registerscreen")}
       />
       <TouchableOpacity onPress={passwordResetEmail}>
         <Text style={styles.forgotPassword}>¿Olvidaste tu contraseña?</Text>

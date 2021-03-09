@@ -6,7 +6,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import LoginForm from "../components/loginForm";
+import LoginForm from "../components/forms/loginForm";
 import Logo from "../shared/Logo";
 import { useFonts } from "expo-font";
 
