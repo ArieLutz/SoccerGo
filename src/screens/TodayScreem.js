@@ -1,17 +1,33 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
+import { firebase } from "../../src/firebase";
+import { Button } from 'react-native-elements';
 
 
 
+const TodayScreem = ({ navigation }) => {
 
-const TodayScreem = () => {
+    const LogOut = () => {
+        firebase.auth().signOut().then(() => {
+            navigation.navigate("loginscreen");
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
 
 
     return (
         <View style={styles.container}>
             <Text style={styles.TextToday}>
-               Mostrar juegos del Dia
+                Mostrar juegos del Dia
             </Text>
+            <Button
+                onPress={LogOut}
+                style={styles.buttonStyle}
+                title="Salir">
+
+            </Button>
         </View>
     );
 };
@@ -31,6 +47,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "white",
         marginTop: 10,
+    },
+    buttonStyle: {
+        marginTop: 2
     },
 });
 

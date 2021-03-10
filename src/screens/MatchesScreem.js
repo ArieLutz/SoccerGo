@@ -1,8 +1,21 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 
+import { Button } from 'react-native-elements';
+import { firebase } from "../../src/firebase";
 
-const MatchesScreem = () => {
+
+
+const MatchesScreem = ({ navigation }) => {
+
+    const LogOut = () => {
+        firebase.auth().signOut().then(() => {
+            navigation.navigate("loginscreen");
+            // Sign-out successful.
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
 
 
     return (
@@ -10,6 +23,13 @@ const MatchesScreem = () => {
             <Text style={styles.TextToday}>
                 Resultados de Partidos
             </Text>
+
+            <Button
+                onPress={LogOut}
+                style={styles.buttonStyle}
+                title="Salir">
+
+            </Button>
         </View>
     );
 };
@@ -29,6 +49,9 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "white",
         marginTop: 10,
+    },
+    buttonStyle: {
+        marginTop: 2
     },
 });
 

@@ -5,7 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TabBarNavigation from "./src/screens/TabBarNavigation";
 import loginscreen from "./src/screens/loginscreen";
 import registerscreen from "./src/screens/registerscreen";
-import pantalla_prueba from "./src/screens/pantalla_prueba";
+//import pantalla_prueba from "./src/screens/pantalla_prueba";
+//codigo para implementarla
+// <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
+
 
 const Stack = createStackNavigator();
 
@@ -20,7 +23,7 @@ export default function App() {
               headerStyle:{backgroundColor: "#182126"},
               headerTitleAlign: "center", 
               headerTintColor: "#fff",}}/>
-
+    
             <Stack.Screen 
               name= "registerscreen" component={registerscreen}
               options={{title: "Registrar",
@@ -28,7 +31,10 @@ export default function App() {
               headerTitleAlign: "center",
               headerTintColor: "#fff",}}/>
 
-            <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
+            <Stack.Screen
+              name="TabBarNavigation" component={TabBarNavigation}
+              options={{headerShown:false}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

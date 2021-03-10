@@ -1,5 +1,6 @@
 import React from "react";
-import { NavigationContainer } from '@react-navigation/native';
+import { View, StyleSheet } from "react-native";
+
 
 
 import TabsHomeScreem from "./TabsHomeScreem";
@@ -7,14 +8,22 @@ import HeaderP from "../shared/HeaderP";
 
 
 
-const TabBarNavigation = () => {
+const TabBarNavigation = ({navigation}) => {
 
-    return(
-        <NavigationContainer>
-            <HeaderP/>
-            <TabsHomeScreem/>
-        </NavigationContainer>
+    return (
+        <View style={styles.container}>
+            <HeaderP />
+            <TabsHomeScreem navigation={navigation} />
+        </View>
     )
 }
 
 export default TabBarNavigation;
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+
+    }
+});

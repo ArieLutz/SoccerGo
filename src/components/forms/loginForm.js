@@ -2,13 +2,22 @@ import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text,} from "react-native";
 import { Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { SocialIcon } from 'react-native-elements'
+import { SocialIcon } from 'react-native-elements';
 import { validate } from "email-validator";
 import { firebase } from "../../firebase";
 import Alert from "../../shared/Alert";
 
 
 const loginForm = ({navigation}) => {
+
+  const simpleAlertHandler = () => {
+    //Se crea con el fin de mandar una alerta al usuario cuando entre a
+    //las opcion de recuperar cuenta
+    alert('Se ha enviado un correo de verificación a su correo :)');
+}
+
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -32,7 +41,7 @@ const loginForm = ({navigation}) => {
       firebase
       .auth().signInWithPopup(provider).then((result) => {
        console.log("Inicio de sesión correcta")
-       navigation.navigate("pantalla_prueba")
+       navigation.navigate("TabBarNavigation")
       })
       .catch(err => {
         console.log(err);
@@ -45,7 +54,7 @@ const loginForm = ({navigation}) => {
         .signInWithEmailAndPassword(email, password)
         .then((response) => {
         console.log(response)
-        navigation.navigate("pantalla_prueba")
+        navigation.navigate("TabBarNavigation")
         })
         .catch((error) => {
           setError(error.message);
@@ -57,6 +66,9 @@ const loginForm = ({navigation}) => {
       {
         var auth = firebase.auth();
         auth.sendPasswordResetEmail(email).then(function() {
+
+          simpleAlertHandler()
+
           console.log("Correo enviado")
         }).catch(function(error) {
           console.log(error)
