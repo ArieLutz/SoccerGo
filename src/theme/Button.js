@@ -5,23 +5,19 @@ const { width } = Dimensions.get("screen");
 
 const Button = ({ title }) => {
   return (
-    <TouchableOpacity style={styles.button}>
       <Text style={styles.buttonText}>{title}</Text>
-    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
+  buttonText: {
     alignSelf: "center",
-    backgroundColor: "#9a98a6",
+    backgroundColor: "#656873",
     padding: 8,
     borderRadius: 50,
     marginBottom: 2,
     marginTop: 15,
     width: width * 0.7,
-  },
-  buttonText: {
     color: "#ffffff",
     fontSize: 26,
     fontWeight: "bold",

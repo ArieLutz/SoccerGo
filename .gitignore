@@ -15,3 +15,7 @@ web-build/
 
 #Variable de ambiente
 .enviroment.js
+# enviroment
+.enviroment_firebase.js
+# pantalla de prueba
+.pantalla_prueba.js

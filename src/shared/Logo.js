@@ -9,7 +9,7 @@ const Logo = () => {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={{ uri: require("../../assets/borussia.png") }}
+        source={require("../../assets/logo.png")}
       />
     </View>
   );
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     width: width * 0.6,
     height: height * 0.3,
     resizeMode: "contain",
+    marginTop: "6%",
   },
 });
 

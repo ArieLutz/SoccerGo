@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "@firebase/auth";
 import "@firebase/firestore";
-import getEnvVars from "../../enviroment";
+import getEnvVars from "../../enviroment_firebase";
 
 const {
   apiKey,
