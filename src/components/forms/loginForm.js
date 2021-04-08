@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Text,} from "react-native";
 import { Input } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -6,9 +6,10 @@ import { SocialIcon } from 'react-native-elements';
 import { validate } from "email-validator";
 import { firebase } from "../../firebase";
 import Alert from "../../shared/Alert";
+import { Context as AuthContext } from "../../providers/AuthContext";
 
 
-const loginForm = ({navigation}) => {
+const loginForm = () => {
 
   const simpleAlertHandler = () => {
     //Se crea con el fin de mandar una alerta al usuario cuando entre a
@@ -17,13 +18,21 @@ const loginForm = ({navigation}) => {
 }
 
 
-
+  const { state, signin, clearErrorMessage } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [error, setError] = useState("");
   const provider = new firebase.auth.FacebookAuthProvider();
+
+  useEffect(() => {
+    if (state.errorMessage) clearErrorMessage();
+  }, []);
+
+  useEffect(() => {
+    if (state.errorMessage) setError(state.errorMessage);
+  }, [state.errorMessage]);
 
     // Verifica que se ingresan los datos del email y el password
     const handleVerify = (input) => {
@@ -49,16 +58,8 @@ const loginForm = ({navigation}) => {
     }
 
     const handleLogin = () => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((response) => {
-        console.log(response)
-        navigation.navigate("TabBarNavigation")
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
+      // Iniciar sesión implementado el Contexto de autenticación
+      signin(email, password);
     };
 
     const passwordResetEmail = () => {

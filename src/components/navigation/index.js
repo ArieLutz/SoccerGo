@@ -4,15 +4,13 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as SplashScreen from "expo-splash-screen";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
-import loginscreen from "./src/screens/loginscreen";
-import registerscreen from "./src/screens/registerscreen";
-import pantalla_prueba from "./src/screens/pantalla_prueba";
+import loginscreen from "../../screens/loginscreen";
+import registerscreen from "../../screens/registerscreen";
+//import pantalla_prueba from "../../screens/pantalla_prueba";
+import TabBarNavigation from "../../screens/TabBarNavigation";
 
-import Signin from "../screens/Signin";
-import Signup from "../screens/Signup";
-import Home from "../screens/Home";
-import CreateNote from "../screens/CreateNote";
-import ModifyNote from "../screens/ModifyNote";
+import CreateComment from "../../screens/CreateComment";
+import ModifyComment from "../../screens/ModifyComment";
 
 const Stack = createStackNavigator();
 
@@ -36,20 +34,20 @@ const Navigation = () => {
         <>
           {state.loggedIn ? (
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Home" component={Home} />
-              <Stack.Screen name="CreateNote" component={CreateNote} />
-              <Stack.Screen name="ModifyNote" component={ModifyNote} />
+              <Stack.Screen name="TabBarNavigation" component={TabBarNavigation} />
+              <Stack.Screen name="CreateComment" component={CreateComment} />
+              <Stack.Screen name="ModifyComment" component={ModifyComment} />
             </Stack.Navigator>
           ) : (
             <Stack.Navigator>
               <Stack.Screen
-                name="Signin"
-                component={Signin}
+                name="loginscreen"
+                component={loginscreen}
                 options={{ headerShown: false }}
               />
               <Stack.Screen
-                name="Signup"
-                component={Signup}
+                name="registerscreen"
+                component={registerscreen}
                 options={{ headerShown: false }}
               />
             </Stack.Navigator>

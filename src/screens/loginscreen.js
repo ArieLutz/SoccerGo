@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   ScrollView,
+  View,
 } from "react-native";
 import LoginForm from "../components/forms/loginForm";
 import Logo from "../shared/Logo";

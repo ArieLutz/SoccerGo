@@ -2,9 +2,8 @@ import React, { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Caption, IconButton, TextInput } from "react-native-paper";
 import { format } from "date-fns";
-import theme from "../../theme";
-import { Context as NoteContext } from "../../providers/NoteContext";
-import { Context as AuthContext } from "../../providers/AuthContext";
+import { Context as NoteContext } from "../providers/CommentContext";
+import { Context as AuthContext } from "../providers/AuthContext";
 
 const CreateNote = ({ navigation }) => {
   const { createNote } = useContext(NoteContext);
@@ -34,7 +33,6 @@ const CreateNote = ({ navigation }) => {
         />
         <IconButton
           icon="check-circle-outline"
-          color={theme.colors.primary}
           onPress={handleSaveNote}
         />
       </View>
@@ -63,16 +61,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: theme.colors.backgroundWhite,
   },
   titleInput: {
     fontSize: 22,
     fontWeight: "bold",
-    backgroundColor: theme.colors.backgroundWhite,
   },
   contentInput: {
     flex: 1,
-    backgroundColor: theme.colors.backgroundWhite,
     borderBottomWidth: 0,
   },
   iconBar: {
