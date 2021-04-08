@@ -9,7 +9,7 @@ import Alert from "../../shared/Alert";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
 
-const loginForm = () => {
+const loginForm = ({navigation}) => {
 
   const simpleAlertHandler = () => {
     //Se crea con el fin de mandar una alerta al usuario cuando entre a
@@ -18,13 +18,13 @@ const loginForm = () => {
 }
 
 
-  const { state, signin, clearErrorMessage } = useContext(AuthContext);
+  const { state, signin, clearErrorMessage, loginWithFacebook } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [error, setError] = useState("");
-  const provider = new firebase.auth.FacebookAuthProvider();
+  
 
   useEffect(() => {
     if (state.errorMessage) clearErrorMessage();
@@ -46,15 +46,8 @@ const loginForm = () => {
       }
     };
 
-    const loginWithFacebook = () => {
-      firebase
-      .auth().signInWithPopup(provider).then((result) => {
-       console.log("Inicio de sesión correcta")
-       navigation.navigate("TabBarNavigation")
-      })
-      .catch(err => {
-        console.log(err);
-      })
+    const handlerloginWithFacebook = () => {
+      loginWithFacebook();
     }
 
     const handleLogin = () => {
@@ -81,7 +74,7 @@ const loginForm = () => {
     };
 
     const buttonRegister = () => {
-      navigation.navigate("registerscreen", {});
+      navigation.navigate("registerscreen");
     };
 
   return (
@@ -133,7 +126,7 @@ const loginForm = () => {
         title='Iniciar con Facebook'
         button
         type='facebook'
-        onPress={loginWithFacebook}
+        onPress={handlerloginWithFacebook}
       />
 
       <SocialIcon
