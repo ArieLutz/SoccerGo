@@ -34,7 +34,7 @@ const commentReducer = (state, action) => {
 };
 
 // Referencia al nombre de la colección de comentarios
-const commentsRef = firebase.firestore().collection("comments");
+const commentsRef = firebase.firestore().collection("Comentarios");
 
 // Almacena una nueva comentario para el usuario actual
 const createComment = (dispatch) => (Equipo1, Equipo2, contenido, author) => {
@@ -119,6 +119,6 @@ export const { Provider, Context } = createDataContext(
   {
     comments: [],
     errorMessage: "",
-    currentcomment: { id: "", title: "", content: "", timestamp: "" },
+    currentcomment: { id: "", Equipo1: "", Equipo2: "", contenido: "" },
   }
 );
