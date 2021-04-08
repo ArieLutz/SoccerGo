@@ -8,6 +8,8 @@ const authReducer = (state, action) => {
       return { ...state, errorMessage: action.payload };
     case "signin":
       return { ...state, user: action.payload, loggedIn: true };
+    case "loginWithFacebook":
+      return { ...state, user: action.payload, loggedIn: true };
     case "signout":
       return { ...state, user: action.payload, loggedIn: false };
     case "persistLogin":
@@ -18,6 +20,12 @@ const authReducer = (state, action) => {
         loading: false,
       };
     case "signup":
+      return {
+        ...state,
+        user: action.payload.user,
+        registered: true,
+      };
+    case "registerWithFacebook":
       return {
         ...state,
         user: action.payload.user,
@@ -40,7 +48,7 @@ const signin = (dispatch) => (email, password) => {
       const uid = response.user.uid;
 
       // Obtener la colección desde Firebase
-      const usersRef = firebase.firestore().collection("users");
+      const usersRef = firebase.firestore().collection("Usuarios");
 
       // Verificar que el usuario existe en Firebase authentication
       // y también está almacenado en la colección de usuarios.
@@ -80,7 +88,7 @@ const signout = (dispatch) => () => {
 
 // Verifica si existe el token de firebase para iniciar sesión sin credenciales
 const persistLogin = (dispatch) => () => {
-  const userRef = firebase.firestore().collection("users");
+  const userRef = firebase.firestore().collection("Usuarios");
 
   // Si el usuario ya se ha autenticado previamente, retornar
   // la información del usuario, caso contrario,retonar un objeto vacío.
@@ -107,10 +115,10 @@ const persistLogin = (dispatch) => () => {
   });
 };
 
-const signup = (dispatch) => (fullname, email, password) => {
+const signup = (dispatch) => (usuario, correoElectronico, password) => {
   firebase
     .auth()
-    .createUserWithEmailAndPassword(email, password)
+    .createUserWithEmailAndPassword(correoElectronico, password)
     .then((response) => {
       // Obtener el Unique Identifier generado para cada usuario
       // Firebase -> Authentication
@@ -119,12 +127,12 @@ const signup = (dispatch) => (fullname, email, password) => {
       // Construir el objeto que le enviaremos a la collección de "users"
       const data = {
         id: uid,
-        email,
-        fullname,
+        correoElectronico,
+        usuario,
       };
 
       // Obtener la colección desde Firebase
-      const usersRef = firebase.firestore().collection("users");
+      const usersRef = firebase.firestore().collection("Usuarios");
 
       // Almacenar la información del usuario que se registra en Firestore
       usersRef
@@ -143,6 +151,77 @@ const signup = (dispatch) => (fullname, email, password) => {
   dispatch({ type: "errorMessage", payload: error.message });
 };
 
+//Se registra usando facebook
+const provider = new firebase.auth.FacebookAuthProvider();
+
+const registerWithFacebook = (dispatch) => () => {
+  firebase
+    .auth().signInWithPopup(provider).then((result) => {
+
+      const uid = result.user.uid;
+      const email = result.user.email;
+      const user = result.user.displayName;
+
+  
+      const data = {
+        id: uid,
+        email : email,
+        usuario : user
+      };
+
+    // Obtener la colección desde Firebase
+    const usersRef = firebase.firestore().collection("Usuarios");
+
+    // Almacenar la información del usuario que se registra en Firestore
+    usersRef
+        .doc(uid)
+        .set(data)
+        .then(() => {
+          dispatch({
+            type: "registerWithFacebook",
+            payload: { user: data, registered: true },
+          });
+        })
+        .catch((error) => {
+         // dispatch({ type: "errorMessage", payload: error.message });
+        });
+    });
+  //dispatch({ type: "errorMessage", payload: error.message });
+}
+
+//Inicia Sesion Usando Facebook
+const loginWithFacebook = (dispatch) => () => {
+  firebase.auth()
+  .signInWithPopup(provider)
+  .then((result) => {
+ 
+    const uid = result.user.uid;
+    const email = result.user.email;
+    const user = result.user.displayName;
+
+  
+    const data = {
+      id: uid,
+      email : email,
+      usuario : user
+    };
+
+    // Obtener la colección desde Firebase
+    const usersRef = firebase.firestore().collection("Usuarios");
+
+    // Almacenar la información del usuario que se registra en Firestore
+    usersRef
+      .doc(uid)
+      .set(data)
+      .then((firestoreDocument) => {
+       
+      });
+  })
+  .catch((error) => {
+    dispatch({ type: "errorMessage", payload: error.message });
+  });
+};
+
 const clearErrorMessage = (dispatch) => () => {
   dispatch({ type: "errorMessage", payload: "" });
 };
@@ -156,6 +235,8 @@ export const { Provider, Context } = createDataContext(
     persistLogin,
     signup,
     clearErrorMessage,
+    registerWithFacebook,
+    loginWithFacebook,
   },
   {
     user: {},
