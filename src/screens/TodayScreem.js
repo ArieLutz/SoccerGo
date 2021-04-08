@@ -1,9 +1,11 @@
 import React from "react";
+import React,{  useState, useEffect} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import { Button } from 'react-native-elements';
 
-
+//librerias de conexion
+import index from "../api/index";
 
 const TodayScreem = ({ navigation }) => {
 
