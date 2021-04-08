@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Caption, IconButton, TextInput } from "react-native-paper";
+import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as NoteContext } from "../providers/CommentContext";
 import { Context as AuthContext } from "../providers/AuthContext";
+
 
 const CreateNote = ({ navigation }) => {
   const { createNote } = useContext(NoteContext);
@@ -26,13 +27,14 @@ const CreateNote = ({ navigation }) => {
       <View style={styles.iconBar}>
         <IconButton
           icon="close-circle-outline"
-          color={theme.colors.primary}
+          color={Colors.red500}
           onPress={() => {
             navigation.goBack();
           }}
         />
         <IconButton
           icon="check-circle-outline"
+          color={Colors.green500}
           onPress={handleSaveNote}
         />
       </View>
@@ -61,14 +63,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
+    backgroundColor: "#fff",
   },
   titleInput: {
     fontSize: 22,
     fontWeight: "bold",
+    backgroundColor: "#656873",
   },
   contentInput: {
     flex: 1,
     borderBottomWidth: 0,
+    backgroundColor: "#656873",
   },
   iconBar: {
     paddingTop: 10,
