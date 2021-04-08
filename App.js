@@ -1,35 +1,23 @@
 import React from "react";
+import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import loginscreen from "./src/screens/loginscreen";
-import registerscreen from "./src/screens/registerscreen";
-import pantalla_prueba from "./src/screens/pantalla_prueba";
-
-const Stack = createStackNavigator();
+import Navigation from "./src/components/navigation";
+import { Provider as AuthProvider } from "./src/providers/AuthContext";
+import { Provider as NoteProvider } from "./src/providers/NoteContext";
+import LongTimers from "./src/utils/LongTimers";
 
 export default function App() {
+  LongTimers();
+
   return (
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName={ "loginscreen" } >
-            <Stack.Screen 
-              name="loginscreen" component={loginscreen} 
-              options={{title:"Inico de Sesión", 
-              headerStyle:{backgroundColor: "#182126"},
-              headerTitleAlign: "center", 
-              headerTintColor: "#fff",}}/>
-
-            <Stack.Screen 
-              name= "registerscreen" component={registerscreen}
-              options={{title: "Registrar",
-              headerStyle:{backgroundColor: "#182126",},
-              headerTitleAlign: "center",
-              headerTintColor: "#fff",}}/>
-
-            <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
+    <AuthProvider>
+      <NoteProvider>
+        <PaperProvider>
+          <SafeAreaProvider>
+            <Navigation />
+          </SafeAreaProvider>
+        </PaperProvider>
+      </NoteProvider>
+    </AuthProvider>
   );
 }
