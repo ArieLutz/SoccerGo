@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { StyleSheet, View, } from "react-native";
-import { Input, Button, SocialIcon }  from "react-native-elements";
+import { Input, SocialIcon }  from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { firebase } from "../firabase/index";
+import { firebase } from "../../firebase";
 import { validate } from "email-validator";
-
-
 
 const RegisterForm = ( {navigation} ) => {
     const [usuario, setUsuario] = useState ("");
@@ -46,7 +44,7 @@ const RegisterForm = ( {navigation} ) => {
         firebase
         .auth().signInWithPopup(provider).then((result) => {
          console.log("Inicio de sesión correcta")
-         navigation.navigate("login")
+         navigation.navigate("TabBarNavigation")
         })
         .catch(err => {
           console.log(err);
@@ -60,7 +58,7 @@ const RegisterForm = ( {navigation} ) => {
      .createUserWithEmailAndPassword(correoElectronico, contraseña)
      .then((response)=> {
          console.log(response)
-         navigation.navigate("login")
+         navigation.navigate("TabBarNavigation")
         })
      .catch((error) => console.log(error));
     };
