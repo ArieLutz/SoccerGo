@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions,StyleSheet, View, TouchableOpacity, ScrollView } from "react-native";
-import { Text, withTheme, } from "react-native-elements";
+import { Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RegisterForm from "../components/forms/registerForm";
 

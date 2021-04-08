@@ -2,7 +2,6 @@ import React from "react";
 import {
   Dimensions,
   StyleSheet,
-  View,
   Text,
   ScrollView,
 } from "react-native";

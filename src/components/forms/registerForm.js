@@ -44,7 +44,7 @@ const RegisterForm = ( {navigation} ) => {
         firebase
         .auth().signInWithPopup(provider).then((result) => {
          console.log("Inicio de sesión correcta")
-         navigation.navigate("pantalla_prueba")
+         navigation.navigate("TabBarNavigation")
         })
         .catch(err => {
           console.log(err);
@@ -58,7 +58,7 @@ const RegisterForm = ( {navigation} ) => {
      .createUserWithEmailAndPassword(correoElectronico, contraseña)
      .then((response)=> {
          console.log(response)
-         navigation.navigate("pantalla_prueba")
+         navigation.navigate("TabBarNavigation")
         })
      .catch((error) => console.log(error));
     };
