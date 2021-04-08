@@ -4,9 +4,6 @@ import { Text, withTheme, } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RegisterForm from "../components/forms/registerForm";
 
-
-
-
 const {width, height} = Dimensions.get("screen");
 
 const register = ({navigation}) => {
