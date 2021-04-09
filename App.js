@@ -19,7 +19,7 @@ export default function App() {
           <Stack.Navigator initialRouteName={ "loginscreen" } >
             <Stack.Screen 
               name="loginscreen" component={loginscreen} 
-              options={{title:"Inico de Sesión", 
+              options={{title:"Inicio de Sesión", 
               headerStyle:{backgroundColor: "#182126"},
               headerTitleAlign: "center", 
               headerTintColor: "#fff",}}/>
