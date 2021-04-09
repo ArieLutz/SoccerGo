@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Text,
   ScrollView,
+  View,
 } from "react-native";
 import LoginForm from "../components/forms/loginForm";
 import Logo from "../shared/Logo";
@@ -16,7 +17,12 @@ const Login = ({navigation}) => {
     'Nunito': require("../../assets/fonts/Nunito-Bold.ttf")
   });
 
-  
+  if(!fontsLoaded){
+    return(
+        <View style={{flex: 1, justifyContent: "center", backgroundColor:"#025959"}}>
+        </View>
+    );
+  };
   return (
       <ScrollView style={styles.container}>
         <Logo/>

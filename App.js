@@ -1,18 +1,13 @@
 import React from "react";
+import { Provider as PaperProvider } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import TabBarNavigation from "./src/screens/TabBarNavigation";
-import loginscreen from "./src/screens/loginscreen";
-import registerscreen from "./src/screens/registerscreen";
-//import pantalla_prueba from "./src/screens/pantalla_prueba";
-//codigo para implementarla
-// <Stack.Screen name="pantalla_prueba" component={pantalla_prueba}/>
-
-
-const Stack = createStackNavigator();
+import Navigation from "./src/components/navigation";
+import { Provider as AuthProvider } from "./src/providers/AuthContext";
+import { Provider as NoteProvider } from "./src/providers/CommentContext";
+import LongTimers from "./src/components/utils/LongTimers";
 
 export default function App() {
+<<<<<<< HEAD
   return (
       <SafeAreaProvider>
         <NavigationContainer>
@@ -30,13 +25,19 @@ export default function App() {
               headerStyle:{backgroundColor: "#182126",},
               headerTitleAlign: "center",
               headerTintColor: "#fff",}}/>
+=======
+  LongTimers();
+>>>>>>> origin/devChristian
 
-            <Stack.Screen
-              name="TabBarNavigation" component={TabBarNavigation}
-              options={{headerShown:false}}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
+  return (
+    <AuthProvider>
+      <NoteProvider>
+        <PaperProvider>
+          <SafeAreaProvider>
+            <Navigation />
+          </SafeAreaProvider>
+        </PaperProvider>
+      </NoteProvider>
+    </AuthProvider>
   );
 }
