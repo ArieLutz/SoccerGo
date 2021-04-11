@@ -82,7 +82,6 @@ const loginForm = ({navigation}) => {
       {error ? <Alert title={error} type="error" /> : null}
       <View style={styles.input}>
         <Input
-          placeholder="Email"
           leftIcon={<Icon name="envelope" />}
           value={email}
           onChangeText={setEmail}

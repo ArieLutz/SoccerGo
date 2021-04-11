@@ -1,42 +1,74 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
 import { Context as AuthContext } from "../providers/AuthContext";
+import Alert from "../shared/Alert";
 
 
 const CreateComment = ({ navigation }) => {
   const { createComment } = useContext(CommentContext);
-  const { state } = useContext(AuthContext);
+  const { state, clearErrorMessage } = useContext(AuthContext);
   const [timestamp, setTimestamp] = useState(Date.now());
   const [content, setContent] = useState("");
+  const [contentError, setContentError] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (state.errorMessage) clearErrorMessage();
+  }, []);
+
+  useEffect(() => {
+    if (state.errorMessage) setError(state.errorMessage);
+  }, [state.errorMessage]);
+
+  // Verifica que se ingrese un contenido al comentario
+  const handleVerify = (input) => {
+    if (input === "content") {
+      if (!content) setContentError(true);
+      else setContentError(false);
+    }
+  };
+
 
   const handleSaveNote = () => {
-    if (!title) {
-      setTitle("New note");
-      createComment("New note", timestamp, content, state.user.id);
-    } else createComment('prueba1', 'prueba2', timestamp, content, state.user.id);
-
-    navigation.navigate("Home");
+    if (content) {
+      createComment('prueba1', 'prueba2', timestamp, content, state.user.id);
+      navigation.navigate("TabBarNavigation");
+    } else{
+      setContentError(true);
+    } ;
   };
 
   return (
+    
     <View style={styles.container}>
+      
       <View style={styles.team}>
         <Text style={styles.labelTeam}>Equipo1</Text>
         <Text style={styles.labelTeam}> vs </Text>
         <Text style={styles.labelTeam}>Equipo2</Text>
       </View>
+
       <Caption>{`${format(timestamp, "eee H:m")}, | ${
         content.length
       } characters`}</Caption>
+      {error ? <Alert title={error} type="error" /> : null}
       <TextInput
         multiline
         style={styles.contentInput}
         textAlignVertical="top"
         value={content}
         onChangeText={setContent}
+        onBlur={() => {
+          handleVerify('content');
+        }}
+        errorMessage={
+          contentError
+            ? "Por favor ingrese un comentario"
+            : null
+        }
       />
       <View style={styles.iconBar}>
         <IconButton
@@ -79,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderBottomWidth: 0,
     backgroundColor: "#656873",
-    height:'100%',
+    height:'90%',
   },
   iconBar: {
     paddingTop: 10,
