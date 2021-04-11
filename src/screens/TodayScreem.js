@@ -22,7 +22,7 @@ const TodayScreem = ({ navigation }) => {
         });
     }
     
-    useEffect(() => {
+    /*useEffect(() => {
         getComments(state.user.id);
     }, []);
 
@@ -33,7 +33,7 @@ const TodayScreem = ({ navigation }) => {
         });
         clearMessage();
         }
-    }, [noteState.errorMessage]);
+    }, [noteState.errorMessage]);*/
 
 
     return (

@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-<<<<<<< HEAD
-import { StyleSheet, View } from "react-native";
-=======
 import { StyleSheet, View, Text } from "react-native";
->>>>>>> devChristian
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
@@ -11,29 +7,14 @@ import { Context as AuthContext } from "../providers/AuthContext";
 import Alert from "../shared/Alert";
 
 
-<<<<<<< HEAD
-const createComment= ({ navigation }) => {
-  const { createComment } = useContext(CommentContext);
-  const { state } = useContext(AuthContext);
-  const [title, setTitle] = useState("");
-=======
 const CreateComment = ({ navigation }) => {
   const { createComment } = useContext(CommentContext);
   const { state, clearErrorMessage } = useContext(AuthContext);
->>>>>>> devChristian
   const [timestamp, setTimestamp] = useState(Date.now());
   const [content, setContent] = useState("");
   const [contentError, setContentError] = useState(false);
   const [error, setError] = useState("");
 
-<<<<<<< HEAD
-
-  const handleSaveNote = () => {
-    if (!title) {
-      setTitle("New note");
-      createComment("New note", content, timestamp, state.id);
-    } else createComment(title, content, timestamp, state.id);
-=======
   useEffect(() => {
     if (state.errorMessage) clearErrorMessage();
   }, []);
@@ -41,7 +22,6 @@ const CreateComment = ({ navigation }) => {
   useEffect(() => {
     if (state.errorMessage) setError(state.errorMessage);
   }, [state.errorMessage]);
->>>>>>> devChristian
 
   // Verifica que se ingrese un contenido al comentario
   const handleVerify = (input) => {
@@ -140,8 +120,4 @@ const styles = StyleSheet.create({
   },
 });
 
-<<<<<<< HEAD
-export default createComment;
-=======
 export default CreateComment;
->>>>>>> devChristian
