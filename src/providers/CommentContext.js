@@ -37,7 +37,11 @@ const commentReducer = (state, action) => {
 const commentsRef = firebase.firestore().collection("Comentarios");
 
 // Almacena una nueva comentario para el usuario actual
+<<<<<<< HEAD
 const createComment = (dispatch) => (Equipo1, Equipo2, contenido,timestamp, author) => {
+=======
+const createComment = (dispatch) => (Equipo1, Equipo2, timestamp, contenido, author) => {
+>>>>>>> devChristian
   const data = {
     Equipo1,
     Equipo2,
