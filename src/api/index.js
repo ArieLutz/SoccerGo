@@ -6,16 +6,15 @@ import getEnvVars from "../../enviroment";
 
 
 //Variables de entorno
-const {apiURL} = getEnvVars();
+const {apiUrl} = getEnvVars();
 
 
 //se crea la instancia de conexion
 
 const instance = axios.create({
 
-    baseURL: "https://allsportsapi.com/api/football",
-    headers: { }
-
+    baseURL: apiUrl
+   
 });
 
 
