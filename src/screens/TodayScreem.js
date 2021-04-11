@@ -68,7 +68,11 @@ const TodayScreem = ({ navigation }) => {
                 onPress={LogOut}
                 style={styles.buttonStyle}
                 title="Salir">
-
+            </Button>
+            <Button
+                onPress={() => {navigation.navigate("CreateComment");}}
+                style={styles.buttonStyle}
+                title="Crear comentario">
             </Button>
         </View>
     );

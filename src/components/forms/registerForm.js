@@ -1,19 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View, } from "react-native";
 import { Input, SocialIcon }  from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { firebase } from "../../firebase";
 import { validate } from "email-validator";
+import { Context as AuthContext } from "../../providers/AuthContext";
 
 const RegisterForm = ( {navigation} ) => {
+    const { state, signup, registerWithFacebook } = useContext(AuthContext);
     const [usuario, setUsuario] = useState ("");
     const [correoElectronico, setCorreoElectronico] = useState("");
-    const [contraseña, setContraseña]= useState ("");
-    const [confirmarContraseña, setConfirmarContraseña] = useState (""); 
+    const [password, setpassword]= useState ("");
+    const [confirmarpassword, setConfirmarpassword] = useState (""); 
     const [usuarioError, setUsuarioError]= useState (false);
     const [correoElectronicoError, setCorreoElectronicoError] = useState (false);
-    const [contraseñaError, setContraseñaError]= useState (false);
-    const [confirmarContraseñaError, setConfirmarContraseñaError]= useState (false);
+    const [passwordError, setpasswordError]= useState (false);
+    const [confirmarpasswordError, setConfirmarpasswordError]= useState (false);
+
+    useEffect(() => {
+        if (state.errorMessage) clearErrorMessage();
+    }, []);
+
+    useEffect(() => {
+        if (state.errorMessage) setError(state.errorMessage);
+    }, [state.errorMessage]);
+
+    useEffect(() => {
+        if (state.registered) navigation.navigate("Home");
+    }, [state]);
 
 
     //Verificar que los datos ingresados sean correctos
@@ -27,42 +41,35 @@ const RegisterForm = ( {navigation} ) => {
             if (!correoElectronico) setCorreoElectronicoError(true);
             else if (!validate(correoElectronico)) setCorreoElectronicoError(true);
             else setCorreoElectronicoError(false);
-        } else if (input === "contraseña"){
-            //Verica la contraseña
-            if (!contraseña) setContraseñaError(true);
-            else if (contraseña.length < 6) setContraseñaError(true);
-            else setContraseñaError(false);
-        } else if (input === "confirmarContraseña"){
-            //Verifica la confirmación de la contraseña 
-            if (!confirmarContraseña) setConfirmarContraseñaError(true);
-            else if (confirmarContraseña !== contraseña) setConfirmarContraseñaError(true);
-            else setConfirmarContraseñaError(false);
-        }
+        } else if (input === "password"){
+            //Verica la password
+            if (!password) setpasswordError(true);
+            else if (password.length < 6) setpasswordError(true);
+            else setpasswordError(false);
+        } else if (input === "confirmarpassword"){
+            //Verifica la confirmación de la password 
+            if (!confirmarpassword) setConfirmarpasswordError(true);
+            else if (confirmarpassword !== password) setConfirmarpasswordError(true);
+            else setConfirmarpasswordError(false);
+        }  else if (input === "signup") {
+            if (
+              !usuarioError &&
+              !correoElectronicoError &&
+              !passwordError &&
+              !confirmarpasswordError &&
+              usuario &&
+              correoElectronico &&
+              password &&
+              confirmarpassword
+            )
+              signup(usuario, correoElectronico, password);
+            else setError("All fields are required!");
+          }
     };
 
-    const loginWithFacebook = () => {
-        firebase
-        .auth().signInWithPopup(provider).then((result) => {
-         console.log("Inicio de sesión correcta")
-         navigation.navigate("TabBarNavigation")
-        })
-        .catch(err => {
-          console.log(err);
-        })
+    const handlerRegisterWithFacebook = () => {
+        registerWithFacebook();
       }
-
-    const handleRegister = () =>{ 
-
-     firebase
-     .auth()
-     .createUserWithEmailAndPassword(correoElectronico, contraseña)
-     .then((response)=> {
-         console.log(response)
-         navigation.navigate("TabBarNavigation")
-        })
-     .catch((error) => console.log(error));
-    };
-
 
    return(
        <View  >
@@ -100,32 +107,32 @@ const RegisterForm = ( {navigation} ) => {
                 <Input 
                     placeholder = "Contraseña"
                     leftIcon={<Icon name="lock" />} 
-                    value ={contraseña} 
-                    onChangeText={setContraseña}
+                    value ={password} 
+                    onChangeText={setpassword}
                     secureTextEntry
                     autoCapitalize="none"
                     onBlur = { () => {
-                        handleVerify("contraseña");
+                        handleVerify("password");
                     }}
                     errorMessage={
-                        contraseñaError ? "Por favor ingresa una contraseña de mínimo 6 caracteres" : ""
+                        passwordError ? "Por favor ingresa una Contraseña de mínimo 6 caracteres" : ""
                     }
                 />
             </View>
 
             <View style={styles.input}>
                 <Input 
-                    placeholder = "Repetir contraseña"
+                    placeholder = "Repetir Contraseña"
                     leftIcon={<Icon name="lock" />}
-                    value ={confirmarContraseña} 
-                    onChangeText={setConfirmarContraseña}
+                    value ={confirmarpassword} 
+                    onChangeText={setConfirmarpassword}
                     secureTextEntry
                     autoCapitalize="none"
                     onBlur = { () => {
-                        handleVerify("confirmarContraseña");
+                        handleVerify("confirmarpassword");
                     }}
                     errorMessage={
-                        confirmarContraseñaError ? "Por favor reingresa la contraseña y verifica que es correcta" : ""
+                        confirmarpasswordError ? "Por favor reingresa la Contraseña y verifica que es correcta" : ""
                     }
                 />
             </View>
@@ -134,14 +141,14 @@ const RegisterForm = ( {navigation} ) => {
                  title="Registrar"
                  button
                  style={styles.button}
-                 onPress={handleRegister}
+                 onPress={() => handleVerify("signup")}
             />
 
             <SocialIcon
                 title='Iniciar con Facebook'
                 button
                 type='facebook'
-                onPress={loginWithFacebook}
+                onPress={handlerRegisterWithFacebook}
             />
        </View>
    );
