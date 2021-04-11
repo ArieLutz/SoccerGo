@@ -59,7 +59,7 @@ const createComment = (dispatch) => (Equipo1, Equipo2, timestamp, contenido, aut
 // Obtener las comentarios del usuario
 const getComments = (dispatch) => (userId) => {
   commentsRef
-    .where("userId", "==", userId)
+    .where("id", "==", userId)
     .orderBy("timestamp", "desc")
     .onSnapshot(
       (querySnapshot) => {
