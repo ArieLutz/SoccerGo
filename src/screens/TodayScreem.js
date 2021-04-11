@@ -2,7 +2,7 @@
 import React ,{  useState, useEffect} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
-import { Button } from 'react-native-elements';
+import { Button} from 'react-native-elements';
 
 //librerias de conexion
 import index from "../api/index";
@@ -50,14 +50,14 @@ const TodayScreem = ({ navigation }) => {
         //deben retornar null
         if (!EquiposPorId) {
             return (
-              <Content>
-                <Spinner color="blue"/>
-              </Content>
+              <View>
+                <Text>Cargando...</Text>
+              </View>
             )
           }
 
     
-    console.log(getEquiposPorId);
+    console.log(EquiposPorId);
     
     return (
         <View style={styles.container}>
