@@ -2,16 +2,19 @@ import React from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import { Caption, Card, Paragraph } from "react-native-paper";
 import { format } from "date-fns";
-import theme from "../../theme";
+import theme from "../theme";
+
 
 const { width, height } = Dimensions.get("screen");
 
-const Note = ({ title, content, timestamp }) => {
+const Note = ({ title,Equipo1, Equipo2, contenido, timestamp }) => {
   return (
     <Card style={styles.container}>
       <Card.Title title={title} />
       <Card.Content style={styles.content}>
-        <Paragraph>{content}</Paragraph>
+        <Paragraph>{Equipo1}</Paragraph>
+        <Paragraph>{Equipo2}</Paragraph>
+        <Paragraph>{contenido}</Paragraph>
       </Card.Content>
       <Card.Actions style={styles.actions}>
         <Caption style={styles.timestamp}>{`${format(

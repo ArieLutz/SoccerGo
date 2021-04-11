@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import { Button } from 'react-native-elements';
+import CommentList from "../shared/CommentList";
+import { Context as AuthContext } from "../providers/AuthContext";
+import {Context as CommentContext} from "../providers/CommentContext";
+
 
 
 
 const TodayScreem = ({ navigation }) => {
+    const { state, signout } = useContext(AuthContext);
+    const { state: noteState, getComments, clearMessage } = useContext(CommentContext);
 
     const LogOut = () => {
         firebase.auth().signOut().then(() => {
@@ -15,6 +21,19 @@ const TodayScreem = ({ navigation }) => {
             // An error happened.
         });
     }
+    
+    useEffect(() => {
+        getComments(state.user.id);
+    }, []);
+
+    useEffect(() => {
+        if (noteState.errorMessage) {
+        Toast.show({
+            text2: noteState.errorMessage,
+        });
+        clearMessage();
+        }
+    }, [noteState.errorMessage]);
 
 
     return (
@@ -32,8 +51,9 @@ const TodayScreem = ({ navigation }) => {
                 style={styles.buttonStyle}
                 title="Crear comentario">
             </Button>
+            <CommentList notes={noteState.notes}/>
         </View>
-    );
+    ); 
 };
 
 

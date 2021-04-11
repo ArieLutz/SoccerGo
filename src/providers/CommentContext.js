@@ -37,11 +37,12 @@ const commentReducer = (state, action) => {
 const commentsRef = firebase.firestore().collection("Comentarios");
 
 // Almacena una nueva comentario para el usuario actual
-const createComment = (dispatch) => (Equipo1, Equipo2, contenido, author) => {
+const createComment = (dispatch) => (Equipo1, Equipo2, contenido,timestamp, author) => {
   const data = {
     Equipo1,
     Equipo2,
     contenido,
+    timestamp,
     id: author,
   };
 
@@ -58,7 +59,7 @@ const createComment = (dispatch) => (Equipo1, Equipo2, contenido, author) => {
 // Obtener las comentarios del usuario
 const getComments = (dispatch) => (userId) => {
   commentsRef
-    .where("userId", "==", userId)
+    .where("id", "==", userId)
     .orderBy("timestamp", "desc")
     .onSnapshot(
       (querySnapshot) => {
@@ -90,14 +91,14 @@ const setCurrentComment = (dispatch) => (comment) => {
 };
 
 // Actualizar una comentario existente
-const updateComment = (dispatch) => (id, title, content, timestamp) => {
+const updateComment = (dispatch) => (id,  contenido,  Equipo1, Equipo2,timestamp) => {
   commentsRef
     .doc(id)
-    .update({ title, content, timestamp })
+    .update({  contenido, Equipo1, Equipo2, timestamp })
     .then(() => {
       dispatch({
         type: "updateComment",
-        payload: { comment: { id, title, content, timestamp } },
+        payload: { comment: { id,  contenido,  Equipo1, Equipo2, timestamp } },
       });
       dispatch({ type: "errorMessage", payload: "comment updated!" });
     })
@@ -119,6 +120,6 @@ export const { Provider, Context } = createDataContext(
   {
     comments: [],
     errorMessage: "",
-    currentcomment: { id: "", Equipo1: "", Equipo2: "", contenido: "" },
+    currentcomment: { id: "", contenido: "" ,Equipo1: "", Equipo2: "", timestamp: ""  },
   }
 );

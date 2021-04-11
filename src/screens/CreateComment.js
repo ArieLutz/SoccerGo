@@ -1,23 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
-import { Context as NoteContext } from "../providers/CommentContext";
+import { Context as CommentContext } from "../providers/CommentContext";
 import { Context as AuthContext } from "../providers/AuthContext";
 
 
-const CreateNote = ({ navigation }) => {
-  const { createNote } = useContext(NoteContext);
+const createComment= ({ navigation }) => {
+  const { createComment } = useContext(CommentContext);
   const { state } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [timestamp, setTimestamp] = useState(Date.now());
   const [content, setContent] = useState("");
 
+
   const handleSaveNote = () => {
     if (!title) {
       setTitle("New note");
-      createNote("New note", content, timestamp, state.user.id);
-    } else createNote(title, content, timestamp, state.user.id);
+      createComment("New note", content, timestamp, state.id);
+    } else createComment(title, content, timestamp, state.id);
 
     navigation.navigate("Home");
   };
@@ -82,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateNote;
+export default createComment;
