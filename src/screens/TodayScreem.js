@@ -6,6 +6,9 @@ import { Button} from 'react-native-elements';
 
 //librerias de conexion
 import index from "../api/index";
+import getEnvVars from "../../enviroment";
+
+const {apiKey} = getEnvVars();
 
 const TodayScreem = ({ navigation }) => {
 
@@ -19,7 +22,8 @@ const TodayScreem = ({ navigation }) => {
     }
 
       //maneja el estado de la informacion de covid en las peticiones
-      const [EquiposPorId, setEquiposPorId] = useState(null);
+      const [Equipo1, setEquipo1] = useState(null);
+      const [Equipo2, setEquipo2] = useState(null);
 
       const [errorConsulta, seterrorConsulta] = useState(false); //variable para el estado del try catch
 
@@ -28,11 +32,19 @@ const TodayScreem = ({ navigation }) => {
               // Las peticiones se hacen mediante funciones asincronas(cualquier momento)
               const getEquiposPorId = async () => {
                 try {
+
+                    var  response = [];
                     //Consultar a la API de Covid19
+                    console.log(apiKey);
                     //nuestros valores para este backend Traer la información de el mundo
-                    const response = await index.get(`?&met=Teams&teamId=2616&APIkey=6925361e79865bba9729032b0eab2563f96f361a41514c4b315672126f99ea5b`); 
+                    var response = await index.get(`?&met=Teams&teamId=2616&APIkey=${apiKey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
-                    setEquiposPorId(response.data);        
+                    setEquipo1(response.data);  
+                    
+                    var response = await index.get(`?&met=Teams&teamId=2617&APIkey=${apiKey}`); 
+                    // aqui la variable de estado ya recibio los valores de la peticion
+                    setEquipo2(response.data);
+
                 } catch (errorConsulta) {
                     //errorConsulta al momento de ejecutar la peticion
                     seterrorConsulta(true);
@@ -48,7 +60,7 @@ const TodayScreem = ({ navigation }) => {
 
     //los componentes se renderizan antes de ser mostrados y nunca
         //deben retornar null
-        if (!EquiposPorId) {
+        if (!Equipo1 || !Equipo2) {
             return (
               <View>
                 <Text>Cargando...</Text>
@@ -57,7 +69,7 @@ const TodayScreem = ({ navigation }) => {
           }
 
     
-    console.log(EquiposPorId);
+    console.log(Equipo1, Equipo2);
     
     return (
         <View style={styles.container}>
