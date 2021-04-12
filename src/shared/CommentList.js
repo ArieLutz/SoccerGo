@@ -10,11 +10,12 @@ import { Context as CommentContext } from "../providers/CommentContext";
 import Comment from "./Comment";
 
 const CommentList = ({ navigation, comments }) => {
-  const { state, setCurrentNote } = useContext(CommentContext);
+  const { state, setCurrentComment } = useContext(CommentContext);
 
-  const handleSelectNote = (comment) => {
-    setCurrentNote(comment);
+  const handleSelectComment = (comment) => {
+    setCurrentComment(comment);
     navigation.navigate("ModifyComment");
+    //console.log(state.currentcomment);
   };
 
   const emptyFlatList = (
@@ -32,9 +33,9 @@ const CommentList = ({ navigation, comments }) => {
         renderItem={({ item }) => (
           <>
             <TouchableOpacity
-              onPress={() => {
-                handleSelectNote(item);
-              }}
+                onPress={() => {
+                  handleSelectComment(item);
+                }}
             >
               <Comment
                 key={item.id}
