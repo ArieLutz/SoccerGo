@@ -22,6 +22,7 @@ const CommentList = ({ navigation, notes }) => {
       <Text>You don't have any note yet...</Text>
     </View>
   );
+  console.log("CommentList");
 
   return (
     <View style={styles.container}>
@@ -37,13 +38,9 @@ const CommentList = ({ navigation, notes }) => {
               }}
             >
               <Note
-                key={item.id}
-                title={item.title}
+                key={"hola"}
                 content={item.contenido}
                 timestamp={item.timestamp}
-                Equipo1={item.Equipo1}
-                Equipo1={item.Equipo2}
-
               />
             </TouchableOpacity>
           </>

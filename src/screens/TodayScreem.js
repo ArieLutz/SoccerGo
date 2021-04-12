@@ -3,9 +3,10 @@ import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import { Button } from 'react-native-elements';
 import CommentList from "../shared/CommentList";
+
 import { Context as AuthContext } from "../providers/AuthContext";
 import {Context as CommentContext} from "../providers/CommentContext";
-
+import Toast from "react-native-toast-message";
 
 
 
@@ -22,7 +23,7 @@ const TodayScreem = ({ navigation }) => {
         });
     }
     
-    /*useEffect(() => {
+    useEffect(() => {
         getComments(state.user.id);
     }, []);
 
@@ -31,28 +32,31 @@ const TodayScreem = ({ navigation }) => {
         Toast.show({
             text2: noteState.errorMessage,
         });
-        clearMessage();
+        clearMessage(); 
         }
-    }, [noteState.errorMessage]);*/
+    }, [noteState.errorMessage]);
 
+        console.log(noteState.comments);
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.TextToday}>
-                Mostrar juegos del Dia
-            </Text>
-            <Button
-                onPress={LogOut}
-                style={styles.buttonStyle}
-                title="Salir">
-            </Button>
-            <Button
-                onPress={() => {navigation.navigate("CreateComment");}}
-                style={styles.buttonStyle}
-                title="Crear comentario">
-            </Button>
-            <CommentList notes={noteState.notes}/>
-        </View>
+            
+            <View style={styles.container}>
+            <Toast ref={(ref) => Toast.setRef(ref)}/>
+                <Text style={styles.TextToday}>
+                    Mostrar juegos del Dia
+                </Text>
+                <Button
+                    onPress={LogOut}
+                    style={styles.buttonStyle}
+                    title="Salir">
+                </Button>
+                <Button
+                    onPress={() => {navigation.navigate("CreateComment");}}
+                    style={styles.buttonStyle}
+                    title="Crear comentario">
+                </Button>
+                <CommentList notes={noteState.notes} navigation={navigation}/>
+            </View>
     ); 
 };
 

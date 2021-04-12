@@ -7,14 +7,13 @@ import theme from "../theme";
 
 const { width, height } = Dimensions.get("screen");
 
-const Note = ({ title,Equipo1, Equipo2, contenido, timestamp }) => {
+const Note = ({Equipo1, content, timestamp }) => {
+    console.log("note");
   return (
     <Card style={styles.container}>
-      <Card.Title title={title} />
+      <Card.Title title={Equipo1} />
       <Card.Content style={styles.content}>
-        <Paragraph>{Equipo1}</Paragraph>
-        <Paragraph>{Equipo2}</Paragraph>
-        <Paragraph>{contenido}</Paragraph>
+        <Paragraph>{content}</Paragraph>
       </Card.Content>
       <Card.Actions style={styles.actions}>
         <Caption style={styles.timestamp}>{`${format(
