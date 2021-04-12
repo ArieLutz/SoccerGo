@@ -7,29 +7,28 @@ import {
   View,
 } from "react-native";
 import { Context as CommentContext } from "../providers/CommentContext";
-import Note from "./Note";
+import Comment from "./Comment";
 
-const CommentList = ({ navigation, notes }) => {
+const CommentList = ({ navigation, comments }) => {
   const { state, setCurrentNote } = useContext(CommentContext);
 
-  const handleSelectNote = (note) => {
-    setCurrentNote(note);
-    navigation.navigate("ModifyNote");
+  const handleSelectNote = (comment) => {
+    setCurrentNote(comment);
+    navigation.navigate("ModifyComment");
   };
 
   const emptyFlatList = (
-    <View style={styles.emptyNotes}>
+    <View style={styles.emptycomments}>
       <Text>You don't have any note yet...</Text>
     </View>
   );
-  console.log("CommentList");
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={notes}
+        data={comments}
         emptyFlatList={emptyFlatList}
-        numColumns={2}
+        numColumns={1}
         renderItem={({ item }) => (
           <>
             <TouchableOpacity
@@ -37,8 +36,10 @@ const CommentList = ({ navigation, notes }) => {
                 handleSelectNote(item);
               }}
             >
-              <Note
-                key={"hola"}
+              <Comment
+                key={item.id}
+                Equipo1={item.Equipo1}
+                Equipo2={item.Equipo2}
                 content={item.contenido}
                 timestamp={item.timestamp}
               />
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  emptyNotes: {
+  emptycomments: {
     flex: 1,
     justifyContent: "center",
     alignSelf: "center",
