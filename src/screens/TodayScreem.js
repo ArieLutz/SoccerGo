@@ -36,8 +36,6 @@ const TodayScreem = ({ navigation }) => {
         }
     }, [noteState.errorMessage]);
 
-        console.log(noteState.comments);
-
     return (
             
             <View style={styles.container}>
@@ -55,7 +53,7 @@ const TodayScreem = ({ navigation }) => {
                     style={styles.buttonStyle}
                     title="Crear comentario">
                 </Button>
-                <CommentList notes={noteState.notes} navigation={navigation}/>
+                <CommentList comments={noteState.comments} navigation={navigation}/>
             </View>
     ); 
 };
