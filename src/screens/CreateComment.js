@@ -30,7 +30,7 @@ const CreateComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
-    navigation.navigate("TodayScreem");
+    navigation.navigate("TabBarNavigation");
   };
 
 
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
-    paddingTop: '10px',
+    paddingTop: 10,
   },
   contentInput: {
     flex: 1,
