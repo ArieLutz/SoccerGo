@@ -148,7 +148,7 @@ const signup = (dispatch) => (usuario, correoElectronico, password) => {
           dispatch({ type: "errorMessage", payload: error.message });
         });
     });
-  dispatch({ type: "errorMessage", payload: error.message });
+  //dispatch({ type: "errorMessage", payload: error.message });
 };
 
 //Se registra usando facebook

@@ -16,6 +16,7 @@ const RegisterForm = ( {navigation} ) => {
     const [correoElectronicoError, setCorreoElectronicoError] = useState (false);
     const [passwordError, setpasswordError]= useState (false);
     const [confirmarpasswordError, setConfirmarpasswordError]= useState (false);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         if (state.errorMessage) clearErrorMessage();
