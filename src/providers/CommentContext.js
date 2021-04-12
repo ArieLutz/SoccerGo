@@ -58,14 +58,12 @@ const createComment = (dispatch) => (Equipo1, Equipo2, timestamp, contenido, aut
 
 // Obtener las comentarios del usuario
 const getComments = (dispatch) => (userId) => {
-  console.log(userId);
   commentsRef
     .where("id", "==", userId)
     .orderBy("timestamp", "desc")
     .onSnapshot(
       (querySnapshot) => {
         const comments = [];
-
         querySnapshot.forEach((doc) => {
           const comment = doc.data();
           comment.id = doc.id;
