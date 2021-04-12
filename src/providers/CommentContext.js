@@ -19,8 +19,8 @@ const commentReducer = (state, action) => {
           if (comment.id === action.payload.comment.id) {
             return {
               ...comment,
-              title: action.payload.comment.title,
-              content: action.payload.comment.content,
+              Equipo1: action.payload.comment.Equipo1,
+              contenido: action.payload.comment.contenido,
               timestamp: action.payload.comment.timestamp,
             };
           }
@@ -58,6 +58,7 @@ const createComment = (dispatch) => (Equipo1, Equipo2, timestamp, contenido, aut
 
 // Obtener las comentarios del usuario
 const getComments = (dispatch) => (userId) => {
+  console.log(userId);
   commentsRef
     .where("id", "==", userId)
     .orderBy("timestamp", "desc")

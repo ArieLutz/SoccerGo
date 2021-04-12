@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { Context as NoteContext } from "../../providers/NoteContext";
+import { Context as CommentContext } from "../providers/CommentContext";
 import Note from "./Note";
 
-const NoteList = ({ navigation, notes }) => {
-  const { state, setCurrentNote } = useContext(NoteContext);
+const CommentList = ({ navigation, notes }) => {
+  const { state, setCurrentNote } = useContext(CommentContext);
 
   const handleSelectNote = (note) => {
     setCurrentNote(note);
@@ -22,6 +22,7 @@ const NoteList = ({ navigation, notes }) => {
       <Text>You don't have any note yet...</Text>
     </View>
   );
+  console.log("CommentList");
 
   return (
     <View style={styles.container}>
@@ -37,9 +38,8 @@ const NoteList = ({ navigation, notes }) => {
               }}
             >
               <Note
-                key={item.id}
-                title={item.title}
-                content={item.content}
+                key={"hola"}
+                content={item.contenido}
                 timestamp={item.timestamp}
               />
             </TouchableOpacity>
@@ -61,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NoteList;
+export default CommentList;

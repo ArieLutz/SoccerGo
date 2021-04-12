@@ -7,6 +7,7 @@ import { Context as AuthContext } from "../providers/AuthContext";
 import Alert from "../shared/Alert";
 
 
+
 const CreateComment = ({ navigation }) => {
   const { createComment } = useContext(CommentContext);
   const { state, clearErrorMessage } = useContext(AuthContext);
@@ -29,6 +30,7 @@ const CreateComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
+    navigation.navigate("TodayScreem");
   };
 
 
