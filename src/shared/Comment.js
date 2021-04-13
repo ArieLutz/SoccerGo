@@ -7,7 +7,7 @@ import { format } from "date-fns";
 
 const { width, height } = Dimensions.get("screen");
 
-const Note = ({Equipo1, Equipo2, content, timestamp }) => {
+const Comment = ({Equipo1, Equipo2, content, timestamp }) => {
 var Titulo = (Equipo1+' vs '+Equipo2);
   return (
     <Card style={styles.container}>
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     width: width * 0.9,
     height: height * 0.2,
     margin: 5,
-    // padding: 5,
   },
   content: {
     flex: 1,
@@ -47,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Note;
+export default Comment;
