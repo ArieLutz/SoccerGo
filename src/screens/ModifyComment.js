@@ -1,27 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-<<<<<<< HEAD
-import { StyleSheet, View } from "react-native";
-=======
 import { StyleSheet, View, Text } from "react-native";
->>>>>>> saudyDev
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
-import { Context as AuthContext } from "../providers/AuthContext";
 import Alert from "../shared/Alert";
 
-<<<<<<< HEAD
-const ModifyNote = ({ navigation }) => {
-  const { state: commentsState, updateComment } = useContext(CommentContext);
-  const { state } = useContext(AuthContext);
-  const [title, setTitle] = useState("");
-=======
-
-
 const ModifyComment = ({ navigation }) => {
-  const { state: commentsState, updateComment } = useContext(CommentContext);
-  const { state, clearErrorMessage } = useContext(AuthContext);
->>>>>>> saudyDev
+  const { state: commentsState, updateComment, deleteComment } = useContext(CommentContext);
   const [timestamp, setTimestamp] = useState(Date.now());
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
@@ -30,28 +15,11 @@ const ModifyComment = ({ navigation }) => {
 
   useEffect(() => {
     if (commentsState.currentcomment.id) {
-      setTitle(commentsState.currentcomment.Equipo1);
+      setTitle(commentsState.currentcomment.Equipo1+" vs "+commentsState.currentcomment.Equipo2);
       setContent(commentsState.currentcomment.contenido);
     }
 
   }, [commentsState.currentcomment]);
-
-  useEffect(() => {
-    if (state.errorMessage) clearErrorMessage();
-  }, []);
-
-  useEffect(() => {
-<<<<<<< HEAD
-    if (commentsState.currentcomment.id) {
-      setTitle(commentsState.currentcomment.Equipo1);
-      setContent(commentsState.currentcomment.contenido);
-    }
-  }, [commentsState.currentcomment]);
-=======
-    if (state.errorMessage) setError(state.errorMessage);
-  }, [state.errorMessage]);
-
-  
 
   // Verifica que se ingrese un contenido al comentario
   const handleVerify = (input) => {
@@ -59,18 +27,16 @@ const ModifyComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
-    navigation.navigate("TodayScreem");
   };
 
->>>>>>> saudyDev
+  const handleDeleteComment = () => {
+    deleteComment(commentsState.currentcomment.id);
+    navigation.navigate("TabBarNavigation");
+  };
 
   const handleSaveComment = () => {
     updateComment(
       commentsState.currentcomment.id,
-<<<<<<< HEAD
-      title ? title : "New note",
-=======
->>>>>>> saudyDev
       content,
       timestamp
     );
@@ -79,32 +45,15 @@ const ModifyComment = ({ navigation }) => {
   return (
     
     <View style={styles.container}>
-<<<<<<< HEAD
-      <View style={styles.iconBar}>
-        <IconButton
-          icon="close-circle-outline"
-          color= {Colors.red500}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-        <IconButton
-          icon="check-circle-outline"
-          color={Colors.green500}
-          onPress={handleSaveComment}
-        />
-=======
       
       <View style={styles.team}>
-        <Text style={styles.labelTeam}>Equipo1</Text>
-        <Text style={styles.labelTeam}> vs </Text>
-        <Text style={styles.labelTeam}>Equipo2</Text>
->>>>>>> saudyDev
+        <Text style={styles.labelTeam}>{title}</Text>
       </View>
       <View style={styles.icondelete}>
             <IconButton 
               icon = "delete-outline"
               color={Colors.red500}
+              onPress={handleDeleteComment}
             />
       </View>
 
