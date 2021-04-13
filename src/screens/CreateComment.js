@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, View, Text, ScrollView, } from "react-native";
+import { StyleSheet, View, Text, } from "react-native";
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
@@ -30,7 +30,6 @@ const CreateComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
-    navigation.navigate("TabBarNavigation");
   };
 
 
@@ -102,17 +101,12 @@ const styles = StyleSheet.create({
     width:'100%',
     height:'12%',
     paddingTop: 10,
-    
   },
   labelTeam:{
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
-<<<<<<< HEAD
     paddingTop:'5%'
-=======
-    paddingTop: 10,
->>>>>>> saudyDev
   },
   contentInput: {
     flex: 1,
