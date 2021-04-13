@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import { Button } from 'react-native-elements';
-import CommentList from "../shared/CommentList";
+import CommentList from "../shared/CommentsList";
 
 
 import {Context as CommentContext} from "../providers/CommentsContext";
@@ -43,7 +43,7 @@ const TodayScreem = ({ navigation }) => {
                 <Text style={styles.TextToday}>
                     Comentarios
                 </Text>
-                <CommentList comments={commentS.comments} navigation={navigation}/>
+                <CommentList comments={commentS.comments}/>
             </View>
     ); 
 };
