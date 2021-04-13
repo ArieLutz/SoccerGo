@@ -30,7 +30,7 @@ const CreateComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
-    navigation.navigate("TabBarNavigation");
+    //navigation.navigate("TabBarNavigation");
   };
 
 
