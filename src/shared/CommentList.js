@@ -15,7 +15,6 @@ const CommentList = ({ navigation, comments }) => {
   const handleSelectComment = (comment) => {
     setCurrentComment(comment);
     navigation.navigate("ModifyComment");
-    //console.log(state.currentcomment);
   };
 
 
@@ -34,15 +33,9 @@ const CommentList = ({ navigation, comments }) => {
         renderItem={({ item }) => (
           <>
             <TouchableOpacity
-<<<<<<< HEAD
               onPress={() => {
-                handleSelectComment(item.id);
+                handleSelectComment(item);
               }}
-=======
-                onPress={() => {
-                  handleSelectComment(item);
-                }}
->>>>>>> saudyDev
             >
               <Comment
                 key={item.id}
