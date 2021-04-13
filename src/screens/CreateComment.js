@@ -73,18 +73,18 @@ const CreateComment = ({ navigation }) => {
         }
       />
       <View style={styles.iconBar}>
-        <IconButton
-          icon="close-circle-outline"
-          color={Colors.red500}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-        <IconButton
-          icon="check-circle-outline"
-          color={Colors.green500}
-          onPress={handleSaveComment}
-        />
+          <IconButton
+            icon="close-circle-outline"
+            color={Colors.red500}
+            onPress={() => {
+              navigation.goBack();
+            }}
+          />
+          <IconButton
+            icon="check-circle-outline"
+            color={Colors.green500}
+            onPress={handleSaveComment}
+          />
       </View>
     </View>
   );
