@@ -62,6 +62,12 @@ const ModifyComment = ({ navigation }) => {
         <Text style={styles.labelTeam}> vs </Text>
         <Text style={styles.labelTeam}>Equipo2</Text>
       </View>
+      <View style={styles.icondelete}>
+            <IconButton 
+              icon = "delete-outline"
+              color={Colors.red500}
+            />
+      </View>
 
       <Caption>{`${format(timestamp, "eee H:m")}, | ${
         content.length
@@ -82,19 +88,21 @@ const ModifyComment = ({ navigation }) => {
             : null
         }
       />
-      <View style={styles.iconBar}>
-        <IconButton
-          icon="close-circle-outline"
-          color={Colors.red500}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        />
-        <IconButton
-          icon="check-circle-outline"
-          color={Colors.green500}
-          onPress={handleSaveComment}
-        />
+      <View >
+        <View style={styles.iconBar}>
+            <IconButton
+              icon="close-circle-outline"
+              color={Colors.blue500}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+            <IconButton  
+              icon="check-circle-outline"
+              color={Colors.green500}
+              onPress={handleSaveComment}
+            />
+        </View>
       </View>
     </View>
   );
@@ -130,6 +138,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
   },
+
+  icondelete: {
+    paddingTop: 10,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+
 });
 
 export default ModifyComment;
