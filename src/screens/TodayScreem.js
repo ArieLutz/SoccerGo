@@ -76,48 +76,41 @@ const TodayScreem = ({ navigation }) => {
         <View style={styles.container}>
             
              
-            <Card style={{marginTop: -20 }} containerStyle={{backgroundColor: '#CCCED9', borderColor: "#CCCED9" }}>
+            <Card style={styles.CardPrincipal} containerStyle={styles.CardPrincipalContainer}>
             <Card.Title >Liga</Card.Title>
-            <Card.Divider style={{backgroundColor: '#2089DC', marginBottom:-10}}/>
-                <Card containerStyle={{backgroundColor: '#CCCED9', borderColor: "#CCCED9" }} style={{shadowColor: "#000"}}>
-                    <View
-                     style={{
-                        flexDirection: "row",
-                        height: 100,
-                        padding: 20,
-                        backgroundColor: '#CCCED9'
-                      }}
-                    >
+            <Card.Divider style={styles.FirstDivider}/>
+                <Card containerStyle={styles.ContainerInf}>
+                    <View  style={styles.InfoTeams} >
 
-                    <Text style={{marginBottom: 10, paddingRight:10, marginLeft:-10, fontWeight:"bold", fontSize:20}}>
+                    <Text style={styles.TitleTeam1}>
                     Bayer Munich
                     </Text>
 
                     <Image
                     source={require("../img/Equipodefault1.png")}
-                    style={{ width:70, height: 70, marginTop: -3}}
-                    />
+                    style={styles.LogoTeam1}/>
                     
-                    <Text style={{ padding:10, fontWeight:"bold", fontSize:25}}>
+                    <Text style={styles.VS}>
                     VS
                     </Text>
 
                     <Image
                     source={require("../img/Equipodefault2.png")}
-                    style={{ width:70, height: 70,  marginTop: -3}}
+                    style={styles.LogoTeam2}
                     />
 
-                    <Text style={{ marginBottom: 10, paddingLeft:10, fontWeight:"bold", fontSize:20}}>
+                    <Text style={styles.TitleTeam2}>
                     Chelsea
                     </Text>
                     
                     </View>
                     
                 </Card>
-                <Card.Divider style={{marginTop: 5, backgroundColor: '#2089DC'}}/>
+                <Card.Divider style={styles.SecondDivider}/>
                 <Button
+                    onPress={() => {navigation.navigate("CreateComment");}}
                     icon={<Icon name='more' color='#ffffff' style={{paddingRight:5}} />}
-                    buttonStyle={{borderRadius: 0, marginLeft: 15, marginRight: 15, marginBottom: 0}}
+                    buttonStyle={styles.ButtonComent}
                     title='Comentar' 
                 />
             </Card>
@@ -126,11 +119,6 @@ const TodayScreem = ({ navigation }) => {
                 onPress={LogOut}
                 style={styles.buttonStyle}
                 title="Salir">
-            </Button>
-            <Button
-                onPress={() => {navigation.navigate("CreateComment");}}
-                style={styles.buttonStyle}
-                title="Crear comentario">
             </Button>
         </View>
     );
@@ -144,6 +132,86 @@ const styles = StyleSheet.create({
         backgroundColor: "#373A40",
 
     },
+    CardPrincipal:{
+        marginTop: -20 
+    },
+
+    CardPrincipalContainer:{
+        backgroundColor: '#CCCED9', 
+        borderColor: "#CCCED9"
+    },
+    
+    FirstDivider: {
+        backgroundColor: '#2089DC',
+        marginBottom:-10
+    },
+
+    ContainerInf : {
+        backgroundColor: '#CCCED9',
+        borderColor: "#CCCED9", 
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 5,
+        },
+        shadowOpacity: 0.34,
+        shadowRadius: 6.27,
+
+        elevation: 10,
+    },
+
+    InfoTeams: {
+        flexDirection: "row",
+        height: 100,
+        padding: 20,
+        backgroundColor: '#CCCED9'
+    },
+
+    TitleTeam1 : {
+        marginBottom: 10, 
+        paddingRight:10, 
+        marginLeft:-10, 
+        fontWeight:"bold", 
+        fontSize:20
+    },
+
+    LogoTeam1 : {
+        width:70, 
+        height: 70, 
+        marginTop: -3
+    },
+
+    VS : {
+        padding:10, 
+        fontWeight:"bold", 
+        fontSize:25
+    },
+
+    LogoTeam2 : {
+        width:70, 
+        height: 70,  
+        marginTop: -3
+    },
+
+    TitleTeam2 : {
+        marginBottom: 10, 
+        paddingLeft:10, 
+        fontWeight:"bold", 
+        fontSize:20
+    },
+
+    SecondDivider: {
+        marginTop: 8, 
+        backgroundColor: '#2089DC'
+    },
+
+    ButtonComent : {
+        borderRadius: 0, 
+        marginLeft: 15, 
+        marginRight: 15, 
+        marginBottom: 0
+    },
+
     TextToday: {
         fontSize: 20,
         color: "#ffff",
@@ -152,9 +220,7 @@ const styles = StyleSheet.create({
         color: "white",
         marginTop: 3,
     },
-    buttonStyle: {
-        marginTop: 2
-    },
+
 });
 
 export default TodayScreem;
