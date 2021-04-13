@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   FlatList,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
-import { Context as CommentContext } from "../providers/CommentContext";
 import Comment from "./Comment";
 
 const CommentsList = ({ comments }) => {
