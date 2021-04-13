@@ -13,7 +13,7 @@ const commentReducer = (state, action) => {
     case "setCurrentComment":
       return { ...state, currentcomment: action.payload };
     case "deleteComment":
-      return { ...state, currentcomment: action.payload };
+      return { ...state, comments: action.payload };
     case "updateComment":
       return {
         ...state,
@@ -111,11 +111,11 @@ const updateComment = (dispatch) => (id, contenido, timestamp) => {
 
 // Elimina el comentario que el usuario escoja
 const deleteComment = (dispatch) => (id) => {
-  TipsRef
+  commentsRef
     .doc(id)
     .delete()
     .then((_doc) => {
-      dispatch({ type: "errorMessage", payload: "Comentario deleted" });
+      dispatch({ type: "errorMessage", payload: "Coment deleted" });
     })
     .catch((error) => {
       dispatch({ type: "errorMessage", payload: error.message });
