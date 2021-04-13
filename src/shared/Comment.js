@@ -9,20 +9,12 @@ const Comment = ({Equipo1, Equipo2, content, timestamp }) => {
 var Titulo = (Equipo1+' vs '+Equipo2);
   return (
     <Card style={styles.container}>
-<<<<<<< HEAD
       <Card.Title title={Titulo}/>
-=======
-      <Card.Title  title={Titulo} />
->>>>>>> saudyDev
       <Card.Content style={styles.content}>
         <Paragraph>{content}</Paragraph>
       </Card.Content>
       <Card.Actions style={styles.actions}>
-<<<<<<< HEAD
         <Caption>{`${format(
-=======
-        <Caption >{`${format(
->>>>>>> saudyDev
           timestamp,
           "eee H:m"
         )}`}</Caption>
