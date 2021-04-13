@@ -1,23 +1,28 @@
-import React from "react";
-import {Dimensions, StyleSheet, View} from "react-native";
+import React, { useContext} from "react";
+import {StyleSheet, View} from "react-native";
 import {Header} from "react-native-elements";
-
-const { width, height } = Dimensions.get("screen");
+import { IconButton, Colors} from "react-native-paper";
+import { Context as AuthContext } from "../providers/AuthContext";
 
 
 const HeaderP = () => {
+  const { signout } = useContext(AuthContext);
     return (
         <View >
          <Header 
             placement="left"
-            leftComponent={{ icon: 'menu', color: '#fff' }}
+            leftComponent={<IconButton
+                              icon="logout"
+                              color={Colors.white}
+                              onPress={() => {
+                                signout();
+                              }}
+                            />}
             centerComponent={{ text: 'SoccerGo', style: { color: '#fff',
-                                                         fontSize: 25} }}
-            rightComponent={{ icon: 'search', color: '#fff'}}
+                                                         fontSize: 25, marginTop:5,fontWeight: "bold"} }}
             containerStyle={{
-              paddingTop: 30,
               backgroundColor: '#182126',
-              justifyContent: 'space-around',
+              justifyContent:'center'
               
             }}
         />
