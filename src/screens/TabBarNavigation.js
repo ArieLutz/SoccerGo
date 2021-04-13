@@ -24,6 +24,5 @@ export default TabBarNavigation;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-
     }
 });
