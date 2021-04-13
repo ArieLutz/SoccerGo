@@ -5,12 +5,9 @@ import  React from "react";
 //Pantallas
 import TodayScreem from "./TodayScreem";
 import MatchesScreem from   "./MatchesScreem";
-<<<<<<< HEAD
 //import ClassificationsScreem from "./ClassificationsScreem";
 import CommentScreem from "./CommentsScreem";
-=======
 import MyComment from "./MyComment";
->>>>>>> saudyDev
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -28,7 +25,7 @@ const TabsHomeScreem = () => {
             tabBarOptions={{
                 activeTintColor: "#ffff",
                 labelsStyle: { fontSize: 12 },
-                style: { backgroundColor: '#182126', marginTop: insets.top }
+                style: { backgroundColor: '#182126' }
             }}
         >
 
@@ -45,15 +42,14 @@ const TabsHomeScreem = () => {
             />
 
             <Tab.Screen
-<<<<<<< HEAD
                 name="CommentScreem"
                 component={CommentScreem}
                 options={{ tabBarLabel: 'Coments' }}
-=======
+            />
+            <Tab.Screen
                 name="MyComment"
                 component={MyComment}
                 options={{ tabBarLabel: 'My Comment' }}
->>>>>>> saudyDev
             />
 
         </Tab.Navigator>
