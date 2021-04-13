@@ -12,7 +12,7 @@ import Toast from "react-native-toast-message";
 
 const TodayScreem = ({ navigation }) => {
     const { state, signout } = useContext(AuthContext);
-    const { state: noteState, getComments, clearMessage } = useContext(CommentContext);
+    const { state: commentState, getComments, clearMessage } = useContext(CommentContext);
 
     const LogOut = () => {
         firebase.auth().signOut().then(() => {
@@ -28,13 +28,13 @@ const TodayScreem = ({ navigation }) => {
     }, []);
 
     useEffect(() => {
-        if (noteState.errorMessage) {
+        if (commentState.errorMessage) {
         Toast.show({
-            text2: noteState.errorMessage,
+            text2: commentState.errorMessage,
         });
         clearMessage(); 
         }
-    }, [noteState.errorMessage]);
+    }, [commentState.errorMessage]);
 
     return (
             
@@ -53,7 +53,12 @@ const TodayScreem = ({ navigation }) => {
                     style={styles.buttonStyle}
                     title="Crear comentario">
                 </Button>
-                <CommentList comments={noteState.comments} navigation={navigation}/>
+                <Button
+                    onPress={() => {navigation.navigate("CommentScreem");}}
+                    style={styles.buttonStyle}
+                    title="Comentarios">
+                </Button>
+                <CommentList comments={commentState.comments} navigation={navigation}/>
             </View>
     ); 
 };
