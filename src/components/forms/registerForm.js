@@ -7,7 +7,7 @@ import { validate } from "email-validator";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
 const RegisterForm = ( {navigation} ) => {
-    const { state, signup, registerWithFacebook } = useContext(AuthContext);
+    const { state, signup, registerWithFacebook, clearErrorMessage } = useContext(AuthContext);
     const [usuario, setUsuario] = useState ("");
     const [correoElectronico, setCorreoElectronico] = useState("");
     const [password, setpassword]= useState ("");
