@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView, } from "react-native";
 import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
@@ -30,11 +30,11 @@ const CreateComment = ({ navigation }) => {
       if (!content) setContentError(true);
       else setContentError(false);
     }
-    navigation.navigate("TodayScreem");
+    navigation.navigate("TabBarNavigation");
   };
 
 
-  const handleSaveNote = () => {
+  const handleSaveComment = () => {
     if (content) {
       createComment('prueba1', 'prueba2', timestamp, content, state.user.id);
       navigation.navigate("TabBarNavigation");
@@ -83,7 +83,7 @@ const CreateComment = ({ navigation }) => {
         <IconButton
           icon="check-circle-outline"
           color={Colors.green500}
-          onPress={handleSaveNote}
+          onPress={handleSaveComment}
         />
       </View>
     </View>
@@ -100,20 +100,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#182126",
     justifyContent: 'center',
     width:'100%',
-    height:'10%',
+    height:'12%',
+    paddingTop: 10,
     
   },
   labelTeam:{
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
-    paddingTop: '10px',
+    paddingTop:'5%'
   },
   contentInput: {
     flex: 1,
     borderBottomWidth: 0,
     backgroundColor: "#656873",
-    height:'90%',
+    height:200,
   },
   iconBar: {
     paddingTop: 10,
