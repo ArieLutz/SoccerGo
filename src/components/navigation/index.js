@@ -11,6 +11,7 @@ import TabBarNavigation from "../../screens/TabBarNavigation";
 
 import CreateComment from "../../screens/CreateComment";
 import ModifyComment from "../../screens/ModifyComment";
+import CommentScreem from "../../screens/CommentsScreem";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ const Navigation = () => {
               <Stack.Screen name="TabBarNavigation" component={TabBarNavigation} />
               <Stack.Screen name="CreateComment" component={CreateComment} />
               <Stack.Screen name="ModifyComment" component={ModifyComment} />
+              <Stack.Screen name="CommentScreem" component={CommentScreem} options={{ headerShown: true, resizeMode:'cover' }} />
             </Stack.Navigator>
           ) : (
             <Stack.Navigator>
@@ -50,6 +52,7 @@ const Navigation = () => {
                 component={registerscreen}
                 options={{ headerShown: false }}
               />
+              
             </Stack.Navigator>
           )}
         </>
