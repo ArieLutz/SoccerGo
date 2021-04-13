@@ -23,23 +23,6 @@ const TodayScreem = ({ navigation }) => {
             // An error happened.
         });
     }
-<<<<<<< HEAD
-    
-    useEffect(() => {
-        getComments(state.user.id);
-    }, []);
-
-    useEffect(() => {
-        if (commentState.errorMessage) {
-        Toast.show({
-            text2: commentState.errorMessage,
-        });
-        clearMessage(); 
-        }
-    }, [commentState.errorMessage]);
-
-=======
->>>>>>> saudyDev
     return (
             
             <View style={styles.container}>
@@ -56,16 +39,6 @@ const TodayScreem = ({ navigation }) => {
                     style={styles.buttonStyle}
                     title="Crear comentario">
                 </Button>
-<<<<<<< HEAD
-                <Button
-                    onPress={() => {navigation.navigate("CommentScreem");}}
-                    style={styles.buttonStyle}
-                    title="Comentarios">
-                </Button>
-                <CommentList comments={commentState.comments} navigation={navigation}/>
-=======
-                
->>>>>>> saudyDev
             </View>
     ); 
 };
