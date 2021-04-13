@@ -22,6 +22,7 @@ const commentReducer = (state, action) => {
             return {
               ...comment,
               Equipo1: action.payload.comment.Equipo1,
+              Equipo2: action.payload.comment.Equipo2,
               contenido: action.payload.comment.contenido,
               timestamp: action.payload.comment.timestamp,
             };
@@ -92,16 +93,16 @@ const setCurrentComment = (dispatch) => (comment) => {
 };
 
 // Actualizar una comentario existente
-const updateComment = (dispatch) => (id, title, content, timestamp) => {
+const updateComment = (dispatch) => (id, contenido, timestamp) => {
   commentsRef
     .doc(id)
-    .update({ title, content, timestamp })
+    .update({ contenido, timestamp })
     .then(() => {
       dispatch({
         type: "updateComment",
-        payload: { comment: { id, title, content, timestamp } },
+        payload: { comment: { id, Equipo1, Equipo2,  contenido, timestamp } },
       });
-      dispatch({ type: "errorMessage", payload: "comment updated!" });
+      dispatch({ type: "errorMessage", payload: "Comment updated!" });
     })
     .catch((error) => {
       dispatch({ type: "errorMessage", payload: error.message });
@@ -135,6 +136,6 @@ export const { Provider, Context } = createDataContext(
   {
     comments: [],
     errorMessage: "",
-    currentcomment: { id: "", Equipo1: "", Equipo2: "", contenido: "" },
+    currentcomment: { id: "", Equipo1: "", Equipo2: "", contenido: "",  timestamp: "" },
   }
 );

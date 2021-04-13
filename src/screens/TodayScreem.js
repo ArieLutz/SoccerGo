@@ -2,11 +2,12 @@ import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import { Button } from 'react-native-elements';
-import CommentList from "../shared/CommentList";
+//import CommentList from "../shared/CommentList";
+
 
 import { Context as AuthContext } from "../providers/AuthContext";
 import {Context as CommentContext} from "../providers/CommentContext";
-import Toast from "react-native-toast-message";
+
 
 
 
@@ -22,6 +23,7 @@ const TodayScreem = ({ navigation }) => {
             // An error happened.
         });
     }
+<<<<<<< HEAD
     
     useEffect(() => {
         getComments(state.user.id);
@@ -36,10 +38,11 @@ const TodayScreem = ({ navigation }) => {
         }
     }, [commentState.errorMessage]);
 
+=======
+>>>>>>> saudyDev
     return (
             
             <View style={styles.container}>
-            <Toast ref={(ref) => Toast.setRef(ref)}/>
                 <Text style={styles.TextToday}>
                     Mostrar juegos del Dia
                 </Text>
@@ -53,12 +56,16 @@ const TodayScreem = ({ navigation }) => {
                     style={styles.buttonStyle}
                     title="Crear comentario">
                 </Button>
+<<<<<<< HEAD
                 <Button
                     onPress={() => {navigation.navigate("CommentScreem");}}
                     style={styles.buttonStyle}
                     title="Comentarios">
                 </Button>
                 <CommentList comments={commentState.comments} navigation={navigation}/>
+=======
+                
+>>>>>>> saudyDev
             </View>
     ); 
 };

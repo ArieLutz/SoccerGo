@@ -108,7 +108,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
+<<<<<<< HEAD
     paddingTop:'5%'
+=======
+    paddingTop: 10,
+>>>>>>> saudyDev
   },
   contentInput: {
     flex: 1,
