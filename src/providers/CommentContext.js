@@ -12,6 +12,8 @@ const commentReducer = (state, action) => {
       return { ...state, comments: action.payload };
     case "setCurrentComment":
       return { ...state, currentcomment: action.payload };
+    case "deleteComment":
+      return { ...state, currentcomment: action.payload };
     case "updateComment":
       return {
         ...state,
@@ -56,7 +58,7 @@ const createComment = (dispatch) => (Equipo1, Equipo2, timestamp, contenido, aut
     });
 };
 
-// Obtener las comentarios del usuario
+// Obtener los comentarios del usuario
 const getComments = (dispatch) => (userId) => {
   commentsRef
     .where("id", "==", userId)
@@ -106,6 +108,19 @@ const updateComment = (dispatch) => (id, title, content, timestamp) => {
     });
 };
 
+// Elimina el comentario que el usuario escoja
+const deleteComment = (dispatch) => (id) => {
+  TipsRef
+    .doc(id)
+    .delete()
+    .then((_doc) => {
+      dispatch({ type: "errorMessage", payload: "Comentario deleted" });
+    })
+    .catch((error) => {
+      dispatch({ type: "errorMessage", payload: error.message });
+    });
+};
+
 // Exportar las funcionalidades requeridas al contexto
 export const { Provider, Context } = createDataContext(
   commentReducer,
@@ -115,6 +130,7 @@ export const { Provider, Context } = createDataContext(
     setCurrentComment,
     updateComment,
     clearMessage,
+    deleteComment,
   },
   {
     comments: [],
