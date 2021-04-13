@@ -1,14 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
-import { Button } from 'react-native-elements';
 import CommentList from "../shared/CommentsList";
-
 
 import {Context as CommentContext} from "../providers/CommentsContext";
 import Toast from "react-native-toast-message";
-
-
 
 const TodayScreem = ({ navigation }) => {
 
