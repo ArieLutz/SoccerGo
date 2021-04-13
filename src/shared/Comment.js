@@ -11,12 +11,12 @@ const Note = ({Equipo1, Equipo2, content, timestamp }) => {
 var Titulo = (Equipo1+' vs '+Equipo2);
   return (
     <Card style={styles.container}>
-      <Card.Title style={styles.titulo} title={Titulo} />
+      <Card.Title  title={Titulo} />
       <Card.Content style={styles.content}>
         <Paragraph>{content}</Paragraph>
       </Card.Content>
       <Card.Actions style={styles.actions}>
-        <Caption style={styles.timestamp}>{`${format(
+        <Caption >{`${format(
           timestamp,
           "eee H:m"
         )}`}</Caption>
