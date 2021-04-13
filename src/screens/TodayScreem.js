@@ -1,8 +1,9 @@
 
-import React ,{  useState, useEffect} from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import React ,{  useState, useEffect, Component} from "react";
+import { View,Title, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {Card,ListItem, Button, Icon, Avatar } from 'react-native-elements';
 import { firebase } from "../../src/firebase";
-import { Button} from 'react-native-elements';
+
 
 //librerias de conexion
 import index from "../api/index";
@@ -73,9 +74,54 @@ const TodayScreem = ({ navigation }) => {
     
     return (
         <View style={styles.container}>
-            <Text style={styles.TextToday}>
-                Mostrar juegos del Dia
-            </Text>
+            
+             
+            <Card style={{marginTop: -20 }} containerStyle={{backgroundColor: '#CCCED9', borderColor: "#CCCED9" }}>
+            <Card.Title >Liga</Card.Title>
+            <Card.Divider style={{backgroundColor: '#2089DC', marginBottom:-10}}/>
+                <Card containerStyle={{backgroundColor: '#CCCED9', borderColor: "#CCCED9" }} style={{shadowColor: "#000"}}>
+                    <View
+                     style={{
+                        flexDirection: "row",
+                        height: 100,
+                        padding: 20,
+                        backgroundColor: '#CCCED9'
+                      }}
+                    >
+
+                    <Text style={{marginBottom: 10, paddingRight:10, marginLeft:-10, fontWeight:"bold", fontSize:20}}>
+                    Bayer Munich
+                    </Text>
+
+                    <Image
+                    source={require("../img/Equipodefault1.png")}
+                    style={{ width:70, height: 70, marginTop: -3}}
+                    />
+                    
+                    <Text style={{ padding:10, fontWeight:"bold", fontSize:25}}>
+                    VS
+                    </Text>
+
+                    <Image
+                    source={require("../img/Equipodefault2.png")}
+                    style={{ width:70, height: 70,  marginTop: -3}}
+                    />
+
+                    <Text style={{ marginBottom: 10, paddingLeft:10, fontWeight:"bold", fontSize:20}}>
+                    Chelsea
+                    </Text>
+                    
+                    </View>
+                    
+                </Card>
+                <Card.Divider style={{marginTop: 5, backgroundColor: '#2089DC'}}/>
+                <Button
+                    icon={<Icon name='more' color='#ffffff' style={{paddingRight:5}} />}
+                    buttonStyle={{borderRadius: 0, marginLeft: 15, marginRight: 15, marginBottom: 0}}
+                    title='Comentar' 
+                />
+            </Card>
+
             <Button
                 onPress={LogOut}
                 style={styles.buttonStyle}
@@ -94,9 +140,9 @@ const TodayScreem = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#373A40",
+
     },
     TextToday: {
         fontSize: 20,
@@ -104,7 +150,7 @@ const styles = StyleSheet.create({
         fontWeight: "800",
         textAlign: "center",
         color: "white",
-        marginTop: 10,
+        marginTop: 3,
     },
     buttonStyle: {
         marginTop: 2
