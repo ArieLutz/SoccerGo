@@ -1,27 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { Caption, IconButton, TextInput } from "react-native-paper";
+import { Caption, IconButton, TextInput, Colors } from "react-native-paper";
 import { format } from "date-fns";
-import { Context as NoteContext } from "../providers/CommentContext";
+import { Context as CommentContext } from "../providers/CommentContext";
 import { Context as AuthContext } from "../providers/AuthContext";
 
 const ModifyNote = ({ navigation }) => {
-  const { state: notesState, updateNote } = useContext(NoteContext);
+  const { state: commentsState, updateComment } = useContext(CommentContext);
   const { state } = useContext(AuthContext);
   const [title, setTitle] = useState("");
   const [timestamp, setTimestamp] = useState(Date.now());
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    if (notesState.currentNote.id) {
-      setTitle(notesState.currentNote.title);
-      setContent(notesState.currentNote.content);
+    if (commentsState.currentcomment.id) {
+      setTitle(commentsState.currentcomment.Equipo1);
+      setContent(commentsState.currentcomment.contenido);
     }
-  }, [notesState.currentNote]);
+  }, [commentsState.currentcomment]);
 
-  const handleSaveNote = () => {
-    updateNote(
-      notesState.currentNote.id,
+  const handleSaveComment = () => {
+    updateComment(
+      commentsState.currentcomment.id,
       title ? title : "New note",
       content,
       timestamp
@@ -33,15 +33,15 @@ const ModifyNote = ({ navigation }) => {
       <View style={styles.iconBar}>
         <IconButton
           icon="close-circle-outline"
-          color={theme.colors.primary}
+          color= {Colors.red500}
           onPress={() => {
             navigation.goBack();
           }}
         />
         <IconButton
           icon="check-circle-outline"
-          color={theme.colors.primary}
-          onPress={handleSaveNote}
+          color={Colors.green500}
+          onPress={handleSaveComment}
         />
       </View>
       <TextInput
