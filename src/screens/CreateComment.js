@@ -44,6 +44,8 @@ const CreateComment = ({ navigation, route }) => {
     } ;
   };
 
+ 
+
   return (
     
     <View style={styles.container}>

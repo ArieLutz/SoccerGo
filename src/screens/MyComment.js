@@ -35,6 +35,14 @@ const ModifyComment = ({ navigation }) => {
         }
     }, [noteState.errorMessage]);
 
+    if(!noteState){
+        return(
+            <View style={{flex: 1, justifyContent: "center", backgroundColor:"#656873"}}>
+            </View>
+        );
+      };
+    
+
     return (
         <View style={styles.container}>
             <Text style={styles.TextToday}>Mis comentarios</Text>

@@ -34,6 +34,13 @@ const TodayScreem = ({ navigation }) => {
         }
     }, [commentS.errorMessage]);
 
+    if(!commentS){
+        return(
+            <View style={{flex: 1, justifyContent: "center", backgroundColor:"#656873"}}>
+            </View>
+        );
+      };
+
     return (
             
             <View style={styles.container}>

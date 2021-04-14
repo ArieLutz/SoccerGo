@@ -6,7 +6,7 @@ import {Card, Button, Icon} from 'react-native-elements';
 import index from "../api/index";
 import getEnvVars from "../../enviroment";
 
-const {apiKey} = getEnvVars();
+const {apikey} = getEnvVars();
 
 const Matches = ({ navigation }) => {
 
@@ -16,7 +16,7 @@ const Matches = ({ navigation }) => {
       const [Equipo1, setEquipo1] = useState(null);
       const [Equipo2, setEquipo2] = useState(null);
  
-      const [seterrorConsulta] = useState(false); //variable para el estado del try catch
+      const  [errorConsulta, seterrorConsulta ] = useState(false); //variable para el estado del try catch
 
       //Funcion que genera numeros randos
       function getRandomNumbers() {
@@ -34,11 +34,11 @@ const Matches = ({ navigation }) => {
                     var  response = [];
                     //Consultar a la API de Covid19
                     //nuestros valores para este backend Traer la información de el mundo
-                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apiKey}`); 
+                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apikey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
                     setEquipo1(response.data);  
                     
-                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apiKey}`); 
+                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apikey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
                     setEquipo2(response.data);
 

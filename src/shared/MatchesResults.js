@@ -10,7 +10,7 @@ const { width} = Dimensions.get("window");
 import index from "../api/index";
 import getEnvVars from "../../enviroment";
 
-const {apiKey} = getEnvVars();
+const {apikey} = getEnvVars();
 
 const MatchesScreem = ({ navigation }) => {
 
@@ -18,7 +18,7 @@ const MatchesScreem = ({ navigation }) => {
           const [Equipo1, setEquipo1] = useState(null);
           const [Equipo2, setEquipo2] = useState(null);
      
-          const [seterrorConsulta] = useState(false); //variable para el estado del try catch
+          const [ errorConsulta, seterrorConsulta ] = useState(false); //variable para el estado del try catch
     
           //Funcion que genera numeros randos para el id del equipo
           function getRandomNumbers() {
@@ -42,13 +42,12 @@ const MatchesScreem = ({ navigation }) => {
 
                     var  response = [];
                     //Consultar a la API de Covid19
-                    console.log(apiKey);
                     //nuestros valores para este backend Traer la información de el mundo
-                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apiKey}`); 
+                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apikey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
                     setEquipo1(response.data);  
                     
-                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apiKey}`); 
+                    var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apikey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
                     setEquipo2(response.data);
 
@@ -59,7 +58,6 @@ const MatchesScreem = ({ navigation }) => {
 
                 
             };
-
 
          // Efecto secundario que ejecuta la consulta a la API
 
@@ -279,9 +277,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         color: "white",
         marginTop: 10,
-    },
-    buttonStyle: {
-        marginTop: 2
     },
 });
 

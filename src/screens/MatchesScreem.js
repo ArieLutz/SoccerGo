@@ -6,13 +6,13 @@ import MatchesResults from "../shared/MatchesResults";
 
 
 //Pantalla de los juegos del dia.
-const MatchesScreem = () => {
+const MatchesScreem = ({navigation}) => {
     return (
         <View style={styles.container}>
             
-            <MatchesResults/>
-            <MatchesResults/>
-            <MatchesResults/>
+            <MatchesResults navigation={navigation}/>
+            <MatchesResults navigation={navigation}/>
+            <MatchesResults navigation={navigation}/>
    
         </View>
     );

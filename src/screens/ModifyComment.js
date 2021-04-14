@@ -45,6 +45,13 @@ const ModifyComment = ({ navigation }) => {
     );
   };
 
+  if(!commentsState){
+    return(
+        <View style={{flex: 1, justifyContent: "center", backgroundColor:"#656873"}}>
+        </View>
+    );
+  };
+
   return (
     
     <View style={styles.container}>
