@@ -5,6 +5,8 @@ import { format } from "date-fns";
 import { Context as CommentContext } from "../providers/CommentContext";
 import Alert from "../shared/Alert";
 
+
+//Modificar el contenido de los comentarios.
 const ModifyComment = ({ navigation }) => {
   const { state: commentsState, updateComment, deleteComment } = useContext(CommentContext);
   const [timestamp] = useState(Date.now());
@@ -28,11 +30,13 @@ const ModifyComment = ({ navigation }) => {
     }
   };
 
+  //Verifica que el comentario sea eliminado 
   const handleDeleteComment = () => {
     deleteComment(commentsState.currentcomment.id);
     navigation.navigate("TabBarNavigation");
   };
 
+  //Verfica que guarde el comentario modificado.
   const handleSaveComment = () => {
     updateComment(
       commentsState.currentcomment.id,

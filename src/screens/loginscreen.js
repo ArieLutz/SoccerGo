@@ -10,6 +10,8 @@ import LoginForm from "../components/forms/loginForm";
 import Logo from "../shared/Logo";
 import { useFonts } from "expo-font";
 
+
+
 const Login = ({navigation}) => {
   let [fontsLoaded] = useFonts({
     'Nunito': require("../../assets/fonts/Nunito-Bold.ttf")

@@ -8,7 +8,7 @@ import {Context as CommentContext} from "../providers/CommentContext";
 import Toast from "react-native-toast-message";
 
 
-
+//Pantalla que muestra los comentario del usuario
 const ModifyComment = ({ navigation }) => {
     const { state } = useContext(AuthContext);
     const { state: noteState, getComments, clearMessage } = useContext(CommentContext);

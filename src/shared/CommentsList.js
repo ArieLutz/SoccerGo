@@ -7,6 +7,8 @@ import {
 } from "react-native";
 import Comment from "./Comment";
 
+
+//Funcion que manda a llamar el contenido de los comenatarios de los usuarios 
 const CommentsList = ({ comments }) => {
 
   const emptyFlatList = (

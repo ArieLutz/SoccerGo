@@ -8,6 +8,7 @@ import { firebase } from "../../firebase";
 import Alert from "../../shared/Alert";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
+//Componente del formulario de login 
 
 const loginForm = ({navigation}) => {
 

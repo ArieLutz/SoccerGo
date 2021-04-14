@@ -5,6 +5,8 @@ import { format } from "date-fns";
 
 const { width, height } = Dimensions.get("screen");
 
+
+//Funcion que mostrara el contenido del comentario en la pantalla
 const Comment = ({Equipo1, Equipo2, content, timestamp }) => {
 var Titulo = (Equipo1+' vs '+Equipo2);
   return (

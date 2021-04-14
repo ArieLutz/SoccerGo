@@ -6,6 +6,8 @@ import CommentList from "../shared/CommentsList";
 import {Context as CommentContext} from "../providers/CommentsContext";
 import Toast from "react-native-toast-message";
 
+
+//Comentarios de todo los usuarios regustrados.
 const TodayScreem = ({ navigation }) => {
 
     const { state: commentS, getComments, clearMessage } = useContext(CommentContext);

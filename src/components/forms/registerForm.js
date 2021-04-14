@@ -5,6 +5,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { validate } from "email-validator";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
+
+//Componente para el registro de la app.
 const RegisterForm = ( {navigation} ) => {
     const { state, signup, registerWithFacebook, clearErrorMessage } = useContext(AuthContext);
     const [usuario, setUsuario] = useState ("");

@@ -7,7 +7,7 @@ import { Context as AuthContext } from "../providers/AuthContext";
 import Alert from "../shared/Alert";
 
 
-
+//Función para la creación del comentario 
 const CreateComment = ({ navigation, route }) => {
   const{ team1 }= route.params;
   const{ team2 }= route.params;
@@ -34,7 +34,7 @@ const CreateComment = ({ navigation, route }) => {
     }
   };
 
-
+  //Verifica que el contenido se guarde 
   const handleSaveComment = () => {
     if (content) {
       createComment(team1, team2, timestamp, content, state.user.id);

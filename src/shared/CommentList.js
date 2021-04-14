@@ -9,6 +9,8 @@ import {
 import { Context as CommentContext } from "../providers/CommentContext";
 import Comment from "./Comment";
 
+
+//usar el contexto para verificar que esta trayendo el contenido del comentario
 const CommentList = ({ navigation, comments }) => {
   const { state, setCurrentComment } = useContext(CommentContext);
 
@@ -24,6 +26,7 @@ const CommentList = ({ navigation, comments }) => {
     </View>
   );
 
+    //se manda a traer los datos a de la data 
   return (
     <View style={styles.container}>
       <FlatList

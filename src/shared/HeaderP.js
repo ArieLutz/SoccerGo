@@ -4,7 +4,7 @@ import {Header} from "react-native-elements";
 import { IconButton, Colors} from "react-native-paper";
 import { Context as AuthContext } from "../providers/AuthContext";
 
-
+//Componente para el header de las pantallas.
 const HeaderP = () => {
   const { signout } = useContext(AuthContext);
     return (

@@ -96,6 +96,8 @@ const MatchesScreem = ({ navigation }) => {
     //console.log(getRandomNumbers());
     //console.log(getRandomNumbersGoals());
 
+
+    //Informaciosn de los resultados del partido
     return (
         <View style={styles.container}>
            <Card style={styles.CardPrincipal} containerStyle={styles.CardPrincipalContainer}>

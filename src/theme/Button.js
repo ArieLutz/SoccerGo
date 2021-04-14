@@ -3,6 +3,7 @@ import { StyleSheet, Text, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("screen");
 
+//Componentes para los botones
 const Button = ({ title }) => {
   return (
       <Text style={styles.buttonText}>{title}</Text>

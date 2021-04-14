@@ -4,6 +4,8 @@ import { Image } from "react-native-elements";
 
 const { width, height } = Dimensions.get("screen");
 
+
+//Componente para mostrar el logo
 const Logo = () => {
   return (
     <View style={styles.container}>

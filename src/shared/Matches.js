@@ -67,6 +67,7 @@ const Matches = ({ navigation }) => {
             )
           }
 
+          //Muestra la información del partido 
     return (
         <View style={styles.container}>
            

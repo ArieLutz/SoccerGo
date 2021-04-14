@@ -5,6 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import RegisterForm from "../components/forms/registerForm";
 
 
+//Pantalla de registrar
 const register = ({navigation}) => {
     
     return (

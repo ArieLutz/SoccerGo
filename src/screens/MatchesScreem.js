@@ -5,6 +5,7 @@ import { View, StyleSheet} from 'react-native';
 import MatchesResults from "../shared/MatchesResults";
 
 
+//Pantalla de los juegos del dia.
 const MatchesScreem = () => {
     return (
         <View style={styles.container}>
