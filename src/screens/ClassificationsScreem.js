@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { firebase } from "../../src/firebase";
 
 
-
+//Clasificatoria 
 const ClassificationsScreem = ({ navigation }) => {
 
     const LogOut = () => {

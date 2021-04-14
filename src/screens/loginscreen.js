@@ -11,7 +11,7 @@ import Logo from "../shared/Logo";
 import { useFonts } from "expo-font";
 
 
-
+//Pantalla de Login
 const Login = ({navigation}) => {
   let [fontsLoaded] = useFonts({
     'Nunito': require("../../assets/fonts/Nunito-Bold.ttf")

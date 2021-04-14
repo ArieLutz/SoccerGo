@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+
+//Compontes para mostrar las alertas a los usuarios.
 const Alert = ({ type, title }) => {
   // Iconos
   // error --> error-outline #fdecea
