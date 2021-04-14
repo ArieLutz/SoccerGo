@@ -4,7 +4,6 @@ import { Text } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
 import RegisterForm from "../components/forms/registerForm";
 
-const {width, height} = Dimensions.get("screen");
 
 const register = ({navigation}) => {
     
@@ -25,7 +24,6 @@ const register = ({navigation}) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        ///justifyContent: "center",
         backgroundColor:"#9a98a6",
         padding: 10,
     },

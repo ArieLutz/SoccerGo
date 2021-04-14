@@ -1,23 +1,15 @@
 import  React from "react";
-
-
-
 //Pantallas
 import TodayScreem from "./TodayScreem";
 import MatchesScreem from   "./MatchesScreem";
-//import ClassificationsScreem from "./ClassificationsScreem";
 import CommentScreem from "./CommentsScreem";
 import MyComment from "./MyComment";
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const Tab = createMaterialTopTabNavigator();
 
-
-
 const TabsHomeScreem = () => {
-    const insets = useSafeAreaInsets();
 
     return (
         <Tab.Navigator

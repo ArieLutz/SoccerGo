@@ -10,7 +10,7 @@ const { width} = Dimensions.get("window");
 import index from "../api/index";
 import getEnvVars from "../../enviroment";
 
-const {apiKey, apiImageURL} = getEnvVars();
+const {apiKey} = getEnvVars();
 
 const MatchesScreem = ({ navigation }) => {
 
@@ -18,7 +18,7 @@ const MatchesScreem = ({ navigation }) => {
           const [Equipo1, setEquipo1] = useState(null);
           const [Equipo2, setEquipo2] = useState(null);
      
-          const [errorConsulta, seterrorConsulta] = useState(false); //variable para el estado del try catch
+          const [seterrorConsulta] = useState(false); //variable para el estado del try catch
     
           //Funcion que genera numeros randos para el id del equipo
           function getRandomNumbers() {

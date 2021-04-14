@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions, StyleSheet } from "react-native";
-import { Caption, Card, Paragraph, Colors } from "react-native-paper";
+import { Caption, Card, Paragraph } from "react-native-paper";
 import { format } from "date-fns";
 
 const { width, height } = Dimensions.get("screen");

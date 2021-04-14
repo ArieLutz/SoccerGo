@@ -1,15 +1,12 @@
-
 import React ,{  useState, useEffect} from "react";
-import { View,Text, StyleSheet, Dimensions, Image, } from 'react-native';
+import { View,Text, StyleSheet, Image } from 'react-native';
 import {Card, Button, Icon} from 'react-native-elements';
-import { firebase } from "../firebase";
 
-const { width} = Dimensions.get("screen");
 //librerias de conexion
 import index from "../api/index";
 import getEnvVars from "../../enviroment";
 
-const {apiKey, apiImageURL} = getEnvVars();
+const {apiKey} = getEnvVars();
 
 const Matches = ({ navigation }) => {
 
@@ -19,7 +16,7 @@ const Matches = ({ navigation }) => {
       const [Equipo1, setEquipo1] = useState(null);
       const [Equipo2, setEquipo2] = useState(null);
  
-      const [errorConsulta, seterrorConsulta] = useState(false); //variable para el estado del try catch
+      const [seterrorConsulta] = useState(false); //variable para el estado del try catch
 
       //Funcion que genera numeros randos
       function getRandomNumbers() {
@@ -36,7 +33,6 @@ const Matches = ({ navigation }) => {
 
                     var  response = [];
                     //Consultar a la API de Covid19
-                    console.log(apiKey);
                     //nuestros valores para este backend Traer la información de el mundo
                     var response = await index.get(`?&met=Teams&teamId=${getRandomNumbers()}&APIkey=${apiKey}`); 
                     // aqui la variable de estado ya recibio los valores de la peticion
@@ -54,8 +50,6 @@ const Matches = ({ navigation }) => {
                 
             };
 
-
-    
       // Efecto secundario que ejecuta la consulta a la API
 
       useEffect(() => {
@@ -72,12 +66,6 @@ const Matches = ({ navigation }) => {
               </View>
             )
           }
-
-    
-    console.log(Equipo1, Equipo2);
-    console.log(Equipo1.result[0].team_name);
-    console.log(getRandomNumbers());
-
 
     return (
         <View style={styles.container}>
@@ -114,7 +102,7 @@ const Matches = ({ navigation }) => {
                     </Card>
                     <Card.Divider style={styles.SecondDivider}/>
                     <Button
-                        onPress={() => {navigation.navigate("CreateComment");}}
+                        onPress={() => {navigation.navigate("CreateComment",{team1: Equipo1.result[0].team_name, team2: Equipo2.result[0].team_name});}}
                         icon={<Icon name='more' color='#ffffff' style={{paddingRight:5}} />}
                         buttonStyle={styles.ButtonComent}
                         title='Comentar' 

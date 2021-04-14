@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, Text, Dimensions } from "react-native";
+import { StyleSheet, Text, Dimensions } from "react-native";
 
 const { width } = Dimensions.get("screen");
 

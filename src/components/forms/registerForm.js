@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, View, } from "react-native";
 import { Input, SocialIcon }  from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { firebase } from "../../firebase";
 import { validate } from "email-validator";
 import { Context as AuthContext } from "../../providers/AuthContext";
 
@@ -16,7 +15,7 @@ const RegisterForm = ( {navigation} ) => {
     const [correoElectronicoError, setCorreoElectronicoError] = useState (false);
     const [passwordError, setpasswordError]= useState (false);
     const [confirmarpasswordError, setConfirmarpasswordError]= useState (false);
-    const [error, setError] = useState("");
+    const [setError] = useState("");
 
     useEffect(() => {
         if (state.errorMessage) clearErrorMessage();

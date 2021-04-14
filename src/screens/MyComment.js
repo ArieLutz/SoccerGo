@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
 import CommentList from "../shared/CommentList";
@@ -10,7 +10,7 @@ import Toast from "react-native-toast-message";
 
 
 const ModifyComment = ({ navigation }) => {
-    const { state, signout } = useContext(AuthContext);
+    const { state } = useContext(AuthContext);
     const { state: noteState, getComments, clearMessage } = useContext(CommentContext);
 
     const LogOut = () => {

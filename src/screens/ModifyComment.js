@@ -7,7 +7,7 @@ import Alert from "../shared/Alert";
 
 const ModifyComment = ({ navigation }) => {
   const { state: commentsState, updateComment, deleteComment } = useContext(CommentContext);
-  const [timestamp, setTimestamp] = useState(Date.now());
+  const [timestamp] = useState(Date.now());
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [contentError, setContentError] = useState(false);
@@ -15,7 +15,6 @@ const ModifyComment = ({ navigation }) => {
 
   useEffect(() => {
     if (commentsState.currentcomment.id) {
-      setTitle(commentsState.currentcomment.Equipo1+" vs "+commentsState.currentcomment.Equipo2);
       setContent(commentsState.currentcomment.contenido);
     }
 
@@ -47,7 +46,9 @@ const ModifyComment = ({ navigation }) => {
     <View style={styles.container}>
       
       <View style={styles.team}>
-        <Text style={styles.labelTeam}>{title}</Text>
+        <Text style={styles.labelTeam}>{commentsState.currentcomment.Equipo1}</Text>
+        <Text style={styles.labelVs}> vs </Text>
+        <Text style={styles.labelTeam}>{commentsState.currentcomment.Equipo2}</Text>
       </View>
       <View style={styles.icondelete}>
             <IconButton 
@@ -106,14 +107,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#182126",
     justifyContent: 'center',
     width:'100%',
-    height:'10%',
-    
+    height:'12%',
+    paddingTop: 10,
   },
   labelTeam:{
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
-    paddingTop: 10,
+    paddingTop:'5%'
+  },
+  labelVs:{
+    fontSize: 22,
+    fontWeight: "bold",
+    color:'#2089DC',
+    paddingTop:'5%'
   },
   contentInput: {
     flex: 1,
