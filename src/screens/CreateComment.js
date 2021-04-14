@@ -8,10 +8,12 @@ import Alert from "../shared/Alert";
 
 
 
-const CreateComment = ({ navigation }) => {
+const CreateComment = ({ navigation, route }) => {
+  const{ team1 }= route.params;
+  const{ team2 }= route.params;
   const { createComment } = useContext(CommentContext);
   const { state, clearErrorMessage } = useContext(AuthContext);
-  const [timestamp, setTimestamp] = useState(Date.now());
+  const [timestamp] = useState(Date.now());
   const [content, setContent] = useState("");
   const [contentError, setContentError] = useState(false);
   const [error, setError] = useState("");
@@ -35,7 +37,7 @@ const CreateComment = ({ navigation }) => {
 
   const handleSaveComment = () => {
     if (content) {
-      createComment('prueba1', 'prueba2', timestamp, content, state.user.id);
+      createComment(team1, team2, timestamp, content, state.user.id);
       navigation.navigate("TabBarNavigation");
     } else{
       setContentError(true);
@@ -47,9 +49,9 @@ const CreateComment = ({ navigation }) => {
     <View style={styles.container}>
       
       <View style={styles.team}>
-        <Text style={styles.labelTeam}>Equipo1</Text>
-        <Text style={styles.labelTeam}> vs </Text>
-        <Text style={styles.labelTeam}>Equipo2</Text>
+        <Text style={styles.labelTeam}>{team1}</Text>
+        <Text style={styles.labelVs}> vs </Text>
+        <Text style={styles.labelTeam}>{team2}</Text>
       </View>
 
       <Caption>{`${format(timestamp, "eee H:m")}, | ${
@@ -106,6 +108,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color:'#fff',
+    paddingTop:'5%'
+  },
+  labelVs:{
+    fontSize: 22,
+    fontWeight: "bold",
+    color:'#2089DC',
     paddingTop:'5%'
   },
   contentInput: {
