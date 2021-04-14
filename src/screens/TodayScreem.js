@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet } from 'react-native';
 import { firebase } from "../../src/firebase";
@@ -41,26 +42,33 @@ const TodayScreem = ({ navigation }) => {
                 </Button>
             </View>
     ); 
+=======
+import React from "react";
+import { View, StyleSheet } from 'react-native';
+import Matches from "../shared/Matches";
+
+
+const TodayScreem = () => {
+
+    return (
+        <View style={styles.container}>
+           
+            <Matches/> 
+            <Matches/> 
+            <Matches/>      
+             
+        </View>
+    );
+>>>>>>> devAriel
 };
 
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#373A40",
-    },
-    TextToday: {
-        fontSize: 20,
-        color: "#ffff",
-        fontWeight: "800",
-        textAlign: "center",
-        color: "white",
-        marginTop: 10,
-    },
-    buttonStyle: {
-        marginTop: 2
+
     },
 });
 
