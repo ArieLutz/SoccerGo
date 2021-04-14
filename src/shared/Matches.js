@@ -1,7 +1,7 @@
 
-import React ,{  useState, useEffect, Component} from "react";
-import { View,Title, Text, StyleSheet, Dimensions, Image,ScrollView, TouchableOpacity } from 'react-native';
-import {Card,ListItem, Button, Icon, Avatar } from 'react-native-elements';
+import React ,{  useState, useEffect} from "react";
+import { View,Text, StyleSheet, Dimensions, Image, } from 'react-native';
+import {Card, Button, Icon} from 'react-native-elements';
 import { firebase } from "../firebase";
 
 const { width} = Dimensions.get("screen");
