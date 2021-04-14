@@ -1,25 +1,17 @@
 
-import React ,{  useState, useEffect, Component} from "react";
-import { View,Title, Text, StyleSheet, Image,ScrollView, TouchableOpacity } from 'react-native';
-import {Card,ListItem, Button, Icon, Avatar } from 'react-native-elements';
-import { firebase } from "../../src/firebase";
-
+import { View, StyleSheet } from 'react-native';
 import Matches from "../shared/Matches";
 
 
-const TodayScreem = ({ navigation }) => {
-
-
-
+const TodayScreem = () => {
 
     return (
         <View style={styles.container}>
            
-        <Matches/> 
-        <Matches/> 
-        <Matches/>      
+            <Matches/> 
+            <Matches/> 
+            <Matches/>      
              
-        
         </View>
     );
 };
@@ -32,8 +24,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#373A40",
 
     },
-
-
 });
 
 export default TodayScreem;
